@@ -193,7 +193,7 @@ footer{display:flex;gap:20px;justify-content:center;align-items:center;padding:2
 <nav>
   <a class="on" onclick="go('market',this)">Markets</a>
   <a onclick="go('trade',this)">Trade</a>
-  <a onclick="go('wallet',this)">Wallet</a>
+  <a onclick="location.href='deposit.html'">Wallet</a>
   <a onclick="go('profile',this)">Profile</a>
 </nav>
 </div>
@@ -335,6 +335,6 @@ function withdraw(){
   S.bal-=a;save();paint();wok.style.display="block";
 }
 document.getElementById("addr").textContent=ADDR;
-if(me&&users[me])boot();
+if(me&&users[me])boot();setTimeout(function(){if(location.hash=="#withdraw"&&me)go("wallet",document.querySelectorAll("nav a")[2])},60)
 </script>
 </body></html>

