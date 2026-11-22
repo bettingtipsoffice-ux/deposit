@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1,user-scalable=no">
+<meta name="theme-color" content="#181A20">
+<title>Log In | Binance</title>
+<style>
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Medium.woff2") format("woff2");font-weight:500}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-SemiBold.woff2") format("woff2");font-weight:600 800}
+:root{--bg:#181A20;--input:#29313D;--line:#333B47;--inputline:#474D57;--txt:#EAECEF;--txt2:#929AA5;--txt3:#707A8A;--yellow:#F0B90B;--btn:#FCD535;--ontxt:#202630;--red:#F6465D}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:BinanceNova,Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+button{font-family:inherit;cursor:pointer}input{font-family:inherit}
+main{flex:1;display:flex;flex-direction:column}
+.layout{display:flex;flex-direction:column;align-items:center;padding:80px 24px 48px;flex:1}
+.card{width:100%;max-width:425px}
+.icon-wrap{margin-bottom:32px}
+.head{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px}
+.title{font-weight:600;font-size:32px;line-height:40px}
+.qr{width:40px;height:40px;padding:4px;border-radius:8px;background:var(--input);display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
+.qr svg{width:32px;height:32px;color:var(--txt)}
+.formItem{margin-bottom:16px}
+label{display:block;font-size:14px;color:var(--txt2);margin-bottom:8px}
+.labrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.labrow label{margin-bottom:0}
+.field{border:1px solid var(--inputline);border-radius:4px;display:flex;background:transparent}
+.field:focus-within{border-color:var(--yellow)}
+.field input{width:100%;height:50px;padding:6px 10px;font-size:16px;background:transparent;border:0;outline:0;color:var(--txt);border-radius:4px}
+.field input::placeholder{color:var(--inputline)}
+.btn{width:100%;height:50px;border:0;border-radius:4px;background:var(--btn);color:var(--ontxt);font-size:16px;font-weight:500;margin-top:24px}
+.btn:active{background:#E8C41F}
+.or{display:flex;align-items:center;margin:16px 0}
+.or i{flex:1;height:1px;background:var(--line)}
+.or span{padding:0 16px;font-size:14px;color:var(--txt)}
+.signwith{display:flex;flex-direction:column;gap:16px;width:100%}
+.btn-icon{width:100%;height:50px;border:1px solid var(--inputline);border-radius:4px;background:transparent;color:var(--txt);font-size:16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-icon:hover{background:var(--input)}
+.iw{width:24px;height:24px;display:grid;place-items:center;flex:0 0 auto}
+.links{margin-top:16px;margin-bottom:32px}
+.lnk{background:none;border:0;color:var(--yellow);font-size:16px;line-height:24px;padding:0;text-decoration:underline;text-underline-offset:3px}
+.lnk.sm{font-size:14px}
+.lnkrow{margin-top:8px;display:flex;justify-content:flex-start}
+.err{display:none;color:var(--red);font-size:14px;margin-top:8px}
+.err.on{display:block}
+.back{width:24px;height:24px;display:grid;place-items:center;background:none;border:0;color:var(--txt);padding:0;margin-bottom:16px}
+footer{height:70px;display:flex;align-items:center;justify-content:center;color:var(--txt2);font-size:14px;flex:0 0 auto;padding:0 16px}
+.lang{display:flex;align-items:center;gap:6px;cursor:pointer;color:var(--txt2)}
+.lang:hover{color:var(--yellow)}
+.globe{width:16px;height:16px}
+.lnk2{cursor:pointer;margin-left:16px}
+.lnk2:hover{color:var(--yellow)}
+@media(max-width:767px){
+ .layout{align-items:flex-start;padding:8px 24px 16px}
+ .title{font-size:28px;line-height:36px}
+ .icon-wrap{padding:12px 0 20px;margin-bottom:8px}
+ footer{width:100%}
+}
+@media(min-width:768px){.lnkrow{justify-content:center}}
+</style></head><body>
+<main>
+<div class="layout">
+<div class="card">
+<div class="icon-wrap"><svg height="24" width="120" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><path fill="#F0B90B" d="M5.41406 12L2.71875 14.6953L0 12L2.71875 9.28125L5.41406 12ZM12 5.41406L16.6406 10.0547L19.3594 7.33594L12 0L4.64062 7.35938L7.35938 10.0781L12 5.41406ZM21.2812 9.28125L18.5859 12L21.3047 14.7188L24.0234 12L21.2812 9.28125ZM12 18.5859L7.35938 13.9219L4.64062 16.6406L12 24L19.3594 16.6406L16.6406 13.9219L12 18.5859ZM12 14.6953L14.7188 11.9766L12 9.28125L9.28125 12L12 14.6953ZM40.5938 14.9766V14.9297C40.5938 13.1719 39.6562 12.2812 38.1328 11.6953C39.0703 11.1797 39.8672 10.3359 39.8672 8.85938V8.8125C39.8672 6.75 38.2031 5.41406 35.5312 5.41406H29.4141V18.5625H35.6719C38.6484 18.5859 40.5938 17.3672 40.5938 14.9766ZM36.9844 9.35156C36.9844 10.3359 36.1875 10.7344 34.8984 10.7344H32.2266V7.94531H35.0859C36.3047 7.94531 36.9844 8.4375 36.9844 9.30469V9.35156ZM37.7109 14.6016C37.7109 15.5859 36.9375 16.0312 35.6719 16.0312H32.2266V13.1484H35.5781C37.0547 13.1484 37.7109 13.6875 37.7109 14.5781V14.6016ZM46.6641 18.5625V5.41406H43.7578V18.5625H46.6641ZM62.2266 18.5859V5.41406H59.3672V13.5234L53.2031 5.41406H50.5312V18.5625H53.3906V10.2188L59.7656 18.5859H62.2266ZM78.2578 18.5859L72.6094 5.34375H69.9375L64.2891 18.5859H67.2656L68.4609 15.6328H74.0156L75.2109 18.5859H78.2578ZM72.9844 13.0781H69.4922L71.25 8.8125L72.9844 13.0781ZM92.0625 18.5859V5.41406H89.2031V13.5234L83.0391 5.41406H80.3672V18.5625H83.2266V10.2188L89.6016 18.5859H92.0625ZM106.992 16.4531L105.141 14.6016C104.109 15.5391 103.195 16.1484 101.672 16.1484C99.4219 16.1484 97.8516 14.2734 97.8516 12.0234V11.9531C97.8516 9.70312 99.4453 7.85156 101.672 7.85156C102.984 7.85156 104.016 8.41406 105.047 9.32812L106.898 7.19531C105.68 6 104.203 5.15625 101.719 5.15625C97.6875 5.15625 94.8516 8.22656 94.8516 11.9531V12C94.8516 15.7734 97.7344 18.7734 101.602 18.7734C104.133 18.7969 105.633 17.9062 106.992 16.4531ZM119.344 18.5625V16.0078H112.195V13.2422H118.406V10.6641H112.195V7.99219H119.25V5.41406H109.336V18.5625H119.344Z"></path></svg></div>
+<div id="step1">
+<div class="head"><div class="title" role="heading" aria-level="1">Log in</div><div class="qr" role="button" aria-label="QR code login" tabindex="0"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.558 16.059l.093.028.085.046.073.06.06.074.045.084.03.094.01.1v2.018l-.01.1-.03.093-.045.084-.06.073-.073.06-.085.047-.093.03-.1.009H5.44l-.1-.01-.095-.03-.084-.045-.073-.06-.06-.074-.046-.084-.029-.093-.01-.1v-2.019l.01-.1.029-.093.046-.084.06-.073.073-.06.084-.047.094-.028.1-.01h2.018l.1.01z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.146 12.625l.158.028.151.044.145.061.135.076.126.09.114.103.103.115.09.125.075.136.062.143.045.152.027.159.01.164v7.066l-.01.164-.027.158-.045.152-.062.144-.075.135-.09.126-.103.114-.114.103-.126.09-.135.076-.145.061-.151.045-.158.028-.164.01H2.915l-.164-.01-.158-.028-.152-.045-.144-.061-.136-.075-.125-.091-.115-.103-.102-.114-.09-.126-.076-.135-.061-.144-.045-.152-.027-.158-.01-.164v-7.066l.01-.164.027-.159.045-.152.06-.143.077-.136.09-.125.102-.115.115-.103.125-.09.136-.076.144-.06.152-.045.158-.028.164-.01h7.067l.164.01zM3.31 20.692h6.276v-6.277H3.31v6.277z" fill="currentColor"></path><path d="M15.117 19.59l.083.022.077.036.068.048.06.057.05.068.037.075.024.082.01.1v1.766l-.008.088-.023.083-.035.076-.048.07-.058.059-.068.049-.075.037-.082.024-.1.01h-1.766l-.088-.008-.083-.022-.076-.035-.069-.048-.06-.058-.049-.068-.037-.075-.024-.081-.01-.101v-1.766l.01-.1.029-.093.046-.085.06-.073.074-.06.084-.047.093-.028.1-.01h1.767l.087.008zM19.573 17.31l.1.01.093.029.084.046.073.06.06.074.046.084.03.093.01.1v1.776h1.775l.1.01.093.028.084.046.074.06.06.074.046.085.03.093.01.1v1.766l-.01.1-.03.093-.046.084-.06.074-.074.06-.084.046-.092.03-.101.01h-4.037l-.089-.009-.082-.022-.077-.035-.069-.048-.06-.058-.048-.068-.038-.075-.024-.081-.01-.101v-4.037l.01-.1.029-.094.046-.084.06-.074.074-.06.084-.046.093-.028.1-.01h1.767zM17.402 12.778l.092.028.084.046.074.06.06.074.046.084.03.093.01.1v1.767l-.01.1-.03.093-.046.084-.06.073-.074.06-.084.047-.092.029-.101.01h-1.775V17.3l-.01.1-.03.093-.045.084-.06.074-.074.06-.084.046-.093.03-.1.01h-1.767l-.088-.009-.083-.022-.076-.035-.069-.048-.06-.059-.049-.067-.037-.075-.024-.082-.01-.1v-4.038l.01-.1.029-.093.046-.084.06-.074.074-.06.084-.046.093-.028.1-.011H17.3l.1.01zM21.932 12.775l.083.022.076.036.07.047.059.059.049.067.037.075.024.082.01.1v1.767l-.008.087-.022.083-.035.077-.048.068-.058.06-.068.05-.075.037-.081.024-.101.01h-1.766l-.088-.008-.082-.023-.078-.035-.068-.048-.06-.058-.048-.068-.038-.075-.024-.082-.01-.1v-1.766l.01-.1.028-.093.046-.084.06-.074.074-.06.085-.046.093-.028.1-.011h1.766l.088.008zM7.558 4.953l.093.029.085.046.073.06.06.073.045.084.03.094.01.1v2.018l-.01.1-.03.094-.045.085-.06.073-.073.06-.085.045-.093.03-.1.01H5.44l-.1-.01-.095-.03-.084-.045-.073-.06-.06-.073-.046-.085-.029-.093-.01-.1V5.44l.01-.1.029-.095.046-.084.06-.073.073-.06.084-.046.094-.029.1-.01h2.018l.1.01z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M10.146 1.52l.158.027.151.045.145.06.135.077.126.09.114.102.103.115.09.125.075.136.062.144.045.152.027.158.01.164v7.067l-.01.164-.027.158-.045.151-.062.145-.075.135-.09.126-.103.114-.114.103-.126.09-.135.075-.145.062-.151.045-.158.027-.164.01H2.915l-.164-.01-.158-.027-.152-.045-.144-.062-.136-.075-.125-.09-.115-.103-.102-.114-.09-.126-.076-.135-.061-.145-.045-.151-.027-.158-.01-.164V2.915l.01-.164.027-.158.045-.152.06-.144.077-.136.09-.125.102-.115.115-.102.125-.09.136-.076.144-.061.152-.045.158-.027.164-.01h7.067l.164.01zM3.31 9.586h6.276V3.31H3.31v6.276z" fill="currentColor"></path><path d="M18.663 4.953l.093.029.084.046.073.06.06.073.047.084.03.094.009.1v2.018l-.01.1-.03.094-.045.085-.06.073-.074.06-.084.045-.093.03-.1.01h-2.019l-.1-.01-.093-.03-.084-.045-.073-.06-.06-.073-.047-.085-.028-.093-.01-.1V5.44l.01-.1.028-.095.046-.084.06-.073.074-.06.084-.046.094-.029.1-.01h2.018l.1.01z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M21.251 1.52l.158.027.152.045.144.06.135.077.126.09.114.102.103.115.09.125.076.136.061.144.045.152.028.158.01.164v7.067l-.01.164-.028.158-.045.151-.061.145-.075.135-.091.126-.103.114-.114.103-.126.09-.135.075-.144.062-.152.045-.158.027-.164.01h-7.066l-.164-.01-.159-.027-.152-.045-.143-.062-.136-.075-.125-.09-.115-.103-.103-.114-.09-.126-.076-.135-.06-.145-.045-.151-.028-.158-.01-.164V2.915l.01-.164.028-.158.044-.152.061-.144.076-.136.09-.125.103-.115.115-.102.125-.09.136-.076.143-.061.152-.045.159-.027.164-.01h7.066l.164.01zm-6.836 8.066h6.277V3.31h-6.277v6.276z" fill="currentColor"></path></svg></div></div>
+<form onsubmit="next(event)">
+<div class="formItem"><label for="u">Email/Phone number</label><div class="field"><input id="u" placeholder="Email/Phone (without country code)" autofocus autocapitalize="off" spellcheck="false" autocomplete="username"></div></div>
+<div class="err" id="err"></div>
+<button class="btn" type="submit">Log In</button>
+</form>
+<div class="or"><i></i><span>or</span><i></i></div>
+<div class="signwith">
+<button class="btn-icon" onclick="alt()" aria-label="Continue with Google"><span class="iw"><svg width="24" height="24" viewBox="0 0 24 24"><g clip-path="url(#g1)"><path fill-rule="evenodd" clip-rule="evenodd" d="M19.68 12.1818C19.68 11.6146 19.6291 11.0691 19.5345 10.5455H12V13.64H16.3055C16.12 14.64 15.5564 15.4873 14.7091 16.0546V18.0618H17.2945C18.8073 16.6691 19.68 14.6182 19.68 12.1818Z" fill="#4285F4"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9997 20C14.1597 20 15.9706 19.2836 17.2942 18.0618L14.7088 16.0545C13.9924 16.5345 13.076 16.8182 11.9997 16.8182C9.91604 16.8182 8.1524 15.4109 7.52331 13.52H4.85059V15.5927C6.16695 18.2073 8.8724 20 11.9997 20Z" fill="#34A853"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M7.52364 13.52C7.36364 13.04 7.27273 12.5273 7.27273 12C7.27273 11.4727 7.36364 10.96 7.52364 10.48V8.40729H4.85091C4.30909 9.48729 4 10.7091 4 12C4 13.2909 4.30909 14.5127 4.85091 15.5927L7.52364 13.52Z" fill="#FBBC05"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M11.9997 7.18182C13.1742 7.18182 14.2288 7.58545 15.0579 8.37818L17.3524 6.08364C15.9669 4.79273 14.156 4 11.9997 4C8.8724 4 6.16695 5.79273 4.85059 8.40727L7.52331 10.48C8.1524 8.58909 9.91604 7.18182 11.9997 7.18182Z" fill="#EA4335"></path></g><defs><clipPath id="g1"><rect width="16" height="16" fill="none" transform="translate(4 4)"></rect></clipPath></defs></svg></span><span>Continue with Google</span></button>
+<button class="btn-icon" onclick="alt()" aria-label="Continue with Apple"><span class="iw"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M15.0756 3.64877C15.1861 4.6061 14.7876 5.54843 14.204 6.24214C13.5956 6.92442 12.6209 7.44595 11.6726 7.37879C11.5485 6.45861 12.0291 5.47913 12.5668 4.88187C13.1752 4.20317 14.231 3.68378 15.0756 3.64877ZM18.1084 8.79019C17.9965 8.85395 16.2493 9.84885 16.2687 11.8728C16.2905 14.3233 18.5248 15.1327 18.5511 15.1413C18.5384 15.1985 18.2014 16.3101 17.3644 17.4389C16.665 18.4327 15.931 19.4043 14.7676 19.4214C14.2139 19.4337 13.8401 19.2824 13.4506 19.1248C13.0443 18.9604 12.621 18.7892 11.9587 18.7892C11.2566 18.7892 10.8144 18.9661 10.3881 19.1366C10.0194 19.2841 9.66254 19.4269 9.15964 19.4464C8.05113 19.4857 7.20358 18.3855 6.47861 17.401C5.03018 15.3906 3.90212 11.7342 5.41447 9.24657C6.14771 8.02633 7.48409 7.24118 8.91222 7.21974C9.5412 7.2076 10.1446 7.43792 10.6735 7.63982C11.0781 7.79423 11.439 7.93203 11.7346 7.93203C11.9946 7.93203 12.3456 7.79969 12.7547 7.64548C13.3989 7.40262 14.1871 7.10549 14.9902 7.18545C15.5392 7.20045 17.1035 7.39121 18.1112 8.78862L18.1084 8.79019Z"></path></svg></span><span>Continue with Apple</span></button>
+</div>
+<div class="links">
+<button class="lnk" onclick="location.href='index.html'">Create a Binance Account</button>
+<div class="lnkrow"><button class="lnk">Can't log in?</button></div>
+</div>
+</div>
+<div id="step2" style="display:none">
+<button class="back" onclick="back()" aria-label="Back"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></button>
+<div class="title" style="margin-bottom:24px">Log in</div>
+<div class="formItem"><div class="labrow"><label for="p">Password</label><button class="lnk sm">Forgot password?</button></div><div class="field"><input id="p" type="password" placeholder="Password" autocomplete="current-password"></div></div>
+<div class="err" id="err2"></div>
+<button class="btn" onclick="doLogin()">Log In</button>
+</div>
+</div>
+</div>
+</main>
+<footer>
+<div class="lang"><svg class="globe" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.996 1.32l.475.01.47.031.465.051.458.071.452.09.444.109.437.127.43.144.42.163.412.18.403.195.393.212.383.228.372.244.362.258.35.272.338.287.326.3.313.313.3.326.287.339.272.35.258.361.244.373.228.383.212.393.196.403.18.411.162.421.144.43.127.436.109.445.09.452.07.458.051.464.031.47.01.476-.01.476-.03.47-.052.464-.07.458-.09.452-.109.444-.127.438-.144.429-.163.42-.18.412-.195.403-.212.393-.228.383-.244.372-.258.362-.272.35-.287.338-.3.326-.313.313-.326.3-.338.287-.35.272-.362.259-.372.243-.383.228-.393.212-.403.196-.412.18-.42.162-.43.145-.437.127-.444.108-.452.09-.458.07-.465.052-.47.03-.475.011-.476-.01-.47-.031-.464-.051-.459-.071-.451-.09-.445-.108-.437-.127-.429-.145-.42-.163-.413-.18-.402-.195-.393-.212-.383-.228-.373-.243-.361-.259-.35-.272-.339-.287-.326-.3-.313-.313-.3-.326-.287-.338-.272-.35-.258-.362-.244-.372-.228-.383-.212-.393-.196-.403-.18-.412-.162-.42-.145-.43-.127-.437-.108-.444-.09-.452-.07-.458-.052-.464-.03-.47-.011-.476.01-.476.031-.47.051-.464.071-.458.09-.452.108-.445.127-.437.145-.429.163-.42.179-.412.196-.403.212-.393.228-.383.244-.373.258-.361.272-.35.287-.339.3-.326.313-.313.326-.3.338-.287.35-.272.362-.258.373-.244.383-.228.393-.212.402-.196.412-.18.421-.162.43-.144.436-.127.445-.11.451-.089.459-.07.464-.052.47-.03.476-.01zM9.114 13.173l.02.342.021.31.027.305.03.301.036.296.039.291.043.287.047.281.05.276.055.27.058.265.061.259.064.253.068.247.07.24.074.234.077.228.08.22.081.214.084.206.087.2.157.33.153.29.15.253.144.22.138.187.132.157.125.131.115.107.107.084.095.064.085.048.072.033.06.02.045.01.031.004.032-.003.046-.011.06-.02.072-.034.084-.048.096-.064.107-.085.115-.106.125-.131.131-.158.139-.187.144-.219.15-.253.152-.29.156-.33.087-.199.085-.206.082-.214.079-.22.076-.228.074-.234.07-.24.068-.247.065-.253.06-.259.059-.265.054-.27.05-.276.048-.281.043-.287.039-.291.035-.296.03-.3.027-.306.023-.31.019-.342H9.114zm7.363 0l-.02.394-.026.364-.03.36-.037.355-.042.35-.048.345-.052.34-.058.335-.063.328-.068.323-.072.316-.078.31-.081.304-.087.296-.09.29-.096.282-.1.274-.103.267-.107.258-.111.25-.115.242-.119.232-.122.224-.161.276.41-.138.336-.13.33-.141.323-.155.315-.167.308-.18.3-.191.29-.203.283-.214.274-.225.264-.235.255-.245.245-.256.235-.265.224-.275.213-.283.202-.292.19-.3.178-.308.167-.316.154-.324.14-.33.129-.337.114-.343.101-.35.087-.355.072-.36.062-.397h-4.315zm-13.278 0l.06.387.07.35.084.347.097.34.11.335.123.33.135.322.147.316.16.309.17.302.182.294.193.287.204.278.214.27.225.262.234.252.244.243.253.234.262.224.27.214.28.203.286.192.295.182.303.17.31.159.315.146.323.135.398.147-.159-.278-.118-.223-.115-.232-.112-.24-.108-.25-.104-.256-.1-.264-.097-.272-.092-.279-.088-.286-.084-.293-.08-.3-.075-.306-.07-.312-.066-.318-.06-.324-.057-.33-.051-.334-.046-.34-.04-.345-.036-.349-.03-.354-.025-.357-.02-.388H3.198zm6.24-9.681l-.424.14-.344.132-.337.144-.33.158-.32.17-.315.184-.305.195-.297.208-.287.22-.279.23-.268.241-.259.253-.248.262-.237.272-.227.282-.214.291-.204.3-.19.31-.18.316-.165.325-.153.332-.14.34-.125.346-.111.353-.097.359-.082.365-.067.37-.052.376-.038.409h4.162l.018-.416.024-.386.03-.38.037-.377.042-.37.048-.365.055-.36.06-.353.065-.347.071-.34.077-.334.081-.326.087-.319.092-.311.097-.303.101-.295.106-.287.11-.277.115-.268.12-.26.122-.249.128-.24.13-.229.135-.218.181-.273zm2.456.214l-.031.003-.046.011-.059.02-.072.033-.085.048-.095.064-.107.085-.115.106-.125.13-.132.159-.138.187-.145.22-.15.253-.152.29-.157.33-.09.205-.086.213-.084.221-.082.228-.078.236-.076.242-.072.25-.069.255-.065.263-.062.268-.059.275-.054.281-.051.287-.047.292-.042.297-.039.303-.034.308-.029.313-.025.317-.02.322-.016.354h5.578l-.016-.354-.02-.322-.025-.317-.03-.313-.033-.308-.039-.303-.042-.297-.047-.292-.05-.287-.055-.28-.058-.276-.062-.268-.066-.263-.069-.256L14 6.99l-.075-.242-.079-.236-.081-.228-.084-.22-.087-.214-.09-.205-.156-.33-.153-.29-.149-.253-.144-.219-.139-.187-.131-.158-.125-.13-.115-.107-.107-.084-.096-.065-.084-.048-.073-.033-.06-.02-.045-.011-.032-.004zm2.407-.282l.184.27.138.218.134.229.13.24.126.25.122.26.117.27.114.278.108.289.104.297.099.305.094.314.089.322.083.33.079.337.073.345.067.35.061.358.056.364.05.37.043.375.037.382.03.386.025.39.019.422h4.364l-.038-.405-.051-.373-.066-.366-.08-.362-.096-.356-.11-.35-.123-.343-.137-.336-.15-.33-.163-.322-.176-.314-.188-.307-.2-.298-.211-.29-.223-.28-.233-.27-.244-.262-.255-.251-.264-.241-.274-.23-.283-.22-.292-.208-.3-.196-.309-.184-.317-.172-.324-.16-.332-.146-.339-.133-.345-.12-.423-.126z"></path></svg><span>English (Bahrain)</span></div>
+<span class="lnk2">Cookies</span><span class="lnk2">Privacy</span>
+</footer>
+<script>
+var users=JSON.parse(localStorage.getItem("bncUsers")||"{}"),em="";
+function show(i,m){var d=document.getElementById(i);d.textContent=m;d.className="err on"}
+function next(e){e.preventDefault();var v=u.value.trim().toLowerCase();
+if(!v){show("err","Please enter a valid email or phone number.");return}
+em=v;err.className="err";step1.style.display="none";step2.style.display="block";p.focus()}
+function back(){err2.className="err";step2.style.display="none";step1.style.display="block";u.value=em;u.focus()}
+function doLogin(){if(!users[em]||users[em].pass!==btoa(p.value)){show("err2","Incorrect email or password.");return}
+localStorage.setItem("bncSess",em);location.href="index.html"}
+function alt(){var k=Object.keys(users);if(!k.length){location.href="index.html";return}
+localStorage.setItem("bncSess",k[k.length-1]);location.href="index.html"}
+</script>
+</body></html>
